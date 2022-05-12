@@ -94,6 +94,19 @@ function opt_video_adv:InitControls(x, y, xml, handler)
 	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
 
 
+--Дальность отрисовки травы
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_detail_radius", _st)
+	xml:InitTrackBar("video_adv:track_detail_radius", _st)
+	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+
+--Высота травы	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_detail_scale", _st)
+	xml:InitTrackBar("video_adv:track_detail_scale", _st)
+	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+
+
 	_st = xml:InitStatic("video_adv:templ_item", nil)
 	xml:InitStatic("video_adv:cap_r2_sun", _st)
 	ctl = xml:InitCheck("video_adv:check_r2_sun", _st)
@@ -108,6 +121,25 @@ function opt_video_adv:InitControls(x, y, xml, handler)
 	xml:InitStatic("video_adv:cap_particles_distance", _st)
 	ctl = xml:InitTrackBar("video_adv:track_particles_distance", _st)
 	table.insert(handler.m_preconditions, {func=mode_ge_2a, control=_st})
+
+--Размер карты теней
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_smap_size", _st)
+	ctl = xml:InitComboBox("video_adv:combo_smap_size", _st)
+	handler.combo_smap_size = ctl
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
+
+--Тень от ГГ
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_actor_shadow", _st)
+	ctl = xml:InitCheck("video_adv:check_actor_shadow", _st)
+	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+
+--Тень от травы
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_sun_details", _st)
+	ctl = xml:InitCheck("video_adv:check_sun_details", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
 
 	_st = xml:InitStatic("video_adv:templ_item", nil)
 	xml:InitStatic("video_adv:cap_npc_torch", _st)
@@ -142,19 +174,31 @@ function opt_video_adv:InitControls(x, y, xml, handler)
 	ctl = xml:InitComboBox("video_adv:combo_sun_shafts", _st)
 	table.insert(handler.m_preconditions, {func=mode_ge_25, control=_st})
 
+--Режим солнечных лучей
 	_st = xml:InitStatic("video_adv:templ_item", nil)
-	_st:SetWndSize(vector2():set(_st:GetWidth(), 106))
-	xml:InitStatic("video_adv:cap_ao", _st)
-	ctl = xml:InitTab("video_adv:radio_tab_ao_options", _st)
-	handler.tab_ao_opt = ctl
-	handler:Register(ctl, "tab_ao_opt")
+	xml:InitStatic("video_adv:cap_sunshafts_mode", _st)
+	ctl = xml:InitComboBox("video_adv:combo_sunshafts_mode", _st)
+	handler.combo_sunshafts_mode = ctl
 	table.insert(handler.m_preconditions, {func=mode_ge_25, control=_st})
+	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_ssao_mode", _st)
+	ctl = xml:InitComboBox("video_adv:combo_ssao_mode", _st)
+	handler.combo_ssao_mode = ctl
+	table.insert(handler.m_preconditions, {func=mode_ge_25, control=_st})	
 
 	_st = xml:InitStatic("video_adv:templ_item", nil)
 	xml:InitStatic("video_adv:cap_ssao", _st)
 	ctl = xml:InitComboBox("video_adv:combo_ssao", _st)
 	handler.combo_ssao = ctl
 	table.insert(handler.m_preconditions, {func=mode_ge_25, control=_st})
+
+--Отражения от воды
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_ssr_quality", _st)
+	ctl = xml:InitComboBox("video_adv:combo_ssr_quality", _st)
+	handler.combo_ssr_quality = ctl
+	table.insert(handler.m_preconditions, {func=mode_ge_3, control=_st})
 
 	_st = xml:InitStatic("video_adv:templ_item", nil)
 	xml:InitStatic("video_adv:cap_soft_water", _st)
@@ -204,6 +248,91 @@ function opt_video_adv:InitControls(x, y, xml, handler)
 	xml:InitCheck("video_adv:check_60hz", _st)
 	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
 
+--Блудмарки на дин. объектах
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_bloodmarks_on_skeleton", _st)
+	ctl = xml:InitCheck("video_adv:check_bloodmarks_on_skeleton", _st)
+	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+
+--Эффект Raindrops	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_raindrops", _st)
+	ctl = xml:InitCheck("video_adv:check_raindrops", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
+
+--Виньетка	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_vignette_effect", _st)
+	ctl = xml:InitCheck("video_adv:check_vignette_effect", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
+
+--Динамический hud масок	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_hud_mask", _st)
+	ctl = xml:InitCheck("video_adv:check_hud_mask", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
+	
+--Динамические эффекты HUD	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_hud_dyn_effects", _st)
+	ctl = xml:InitCheck("video_adv:check_hud_dyn_effects", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
+
+--Тип сглаживания	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_r2_aa_mode", _st)
+	ctl = xml:InitComboBox("video_adv:combo_r2_aa_mode", _st)
+	handler.combo_r2_aa_mode = ctl
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
+	
+--Motion Blur	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_mblur_enable", _st)
+	ctl = xml:InitCheck("video_adv:check_mblur_enable", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
+	
+--Интенсивность Motion Blur
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_mblur", _st)
+	xml:InitTrackBar("video_adv:track_mblur", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
+
+--Cam FOV	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_fov", _st)
+	xml:InitTrackBar("video_adv:track_fov", _st)
+	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+
+--HUD FOV	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_hud_fov", _st)
+	xml:InitTrackBar("video_adv:track_hud_fov", _st)
+	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+
 	btn = xml:Init3tButton("video_adv:btn_to_simply", self)
 	handler:Register(btn, "btn_simply_graphic")
+
+--Цветокоррекция: Интенсивность красного
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_color_r", _st)
+	xml:InitTrackBar("video_adv:track_color_r", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
+
+--Цветокоррекция: Интенсивность зелёного
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_color_g", _st)
+	xml:InitTrackBar("video_adv:track_color_g", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
+
+--Цветокоррекция: Интенсивность синего
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_color_b", _st)
+	xml:InitTrackBar("video_adv:track_color_b", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
+
+--Цветокоррекция: Цветовая насыщенность
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_saturation", _st)
+	xml:InitTrackBar("video_adv:track_cap_saturation", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
 end

@@ -867,3 +867,10 @@ function show_all_ui(show)
 			db.actor:disable_hit_marks(true)
 	end
 end
+
+--//M.F.S. Team
+
+function ReadString(iSec,sLin,fIni)
+	if not fIni then fIni=system_ini() end
+	return fIni:r_string(iSec,sLin)
+end

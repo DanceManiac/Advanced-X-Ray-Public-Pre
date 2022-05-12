@@ -693,6 +693,10 @@ inv_grid_height		= 1
 inv_grid_x			= 16
 inv_grid_y			= 12
 
+;«ар€д
+max_charge_level		= 1.0 	;; ћаксимальный уровень зар€да
+uncharge_speed			= 0.025 ;; —корость разр€дки
+
 ;вещью нельз€ торговать
 can_trade			= true
 
@@ -714,6 +718,9 @@ snd_night_vision_off		= weapons\nv_off
 snd_night_vision_idle		= weapons\nv_loop
 snd_night_vision_broken		= weapons\nv_off
 
+snd_turn_on			= mfs_team\item_use\inv_torch
+snd_turn_off			= mfs_team\item_use\inv_torch
+
 night_vision_recharge_time			= 6		;(c) врем€ зар€дки аккамул€тора
 night_vision_recharge_time_min		= 2		;(c) мин. врем€ зар€дки аккамул€тора, после которого уст-во уже может работать
 night_vision_discharge_time			= 20	;(c) врем€ разр€дки (работы) устройства после полной зар€дки
@@ -722,7 +729,7 @@ default_to_ruck						= false
 sprint_allowed						= true
 control_inertion_factor				= 1
 disabled_maps						= ai_test,ai_test2, andy_test_
-
+light_section			= torch_definition
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -741,3 +748,29 @@ anim_hide			= vodka_4
 anim_play			= vodka_5
 anim_prepare		= vodka_5
 anim_eat			= vodka_3
+
+;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;M.F.S. Team;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;
+
+[torch_battery]:booster
+$spawn 				= "food and drugs\kolbasa"
+class				= II_BATTE
+visual				= dynamics\equipments\battery.ogf
+description			= st_battery_descr
+
+inv_name			= st_battery
+inv_name_short			= st_battery
+inv_weight			= 0.025
+
+inv_grid_width			= 1
+inv_grid_height			= 1
+inv_grid_x				= 0
+inv_grid_y				= 27
+
+cost				= 25
+
+charge_level			= 1.0
+
+use_sound			= mfs_team\item_use\inv_battery
+

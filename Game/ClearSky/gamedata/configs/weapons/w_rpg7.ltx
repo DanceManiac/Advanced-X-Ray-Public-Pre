@@ -146,6 +146,10 @@ snd_empty				= weapons\generic_empty
 snd_reload				= weapons\rpg7_reload
 snd_explode				= weapons\rpg7_explode; t_rpg7_explosion
 
+snd_distant_explode = true
+snd_explode_dist = mfs_team\weapons\distant_sounds\explossion_distant_rpg_150
+snd_explode_dist_far = mfs_team\weapons\distant_sounds\explossion_distant_rpg_250
+
 rocket_class				= wpn_rpg7_missile
 wallmark_section			= explosion_marks
 auto_spawn_ammo				= false
@@ -179,6 +183,12 @@ gl_hud_offset_rot					= 0,0,0
 
 lean_hud_offset_pos				= 0,0,0
 lean_hud_offset_rot				= 0,0,0
+
+hud_collision_enabled			= true
+hud_collision_offset_pos		= 0,-0.25,0
+hud_collision_offset_pos_16x9		= 0,-0.25,0
+hud_collision_offset_rot		= -0.8,0,0
+hud_collision_offset_rot_16x9		= -0.8,0,0
 
 anm_show								= rpg7_draw
 anm_hide								= rpg7_holster
@@ -244,6 +254,10 @@ explode_duration		 	= 5		;подолжительность взрыва (с)
 ;звуки
 snd_explode 				= weapons\rpg7_explode
 snd_fly_sound				= weapons\rocket_fly
+
+snd_distant_explode = true
+snd_explode_dist = mfs_team\weapons\distant_sounds\explossion_distant_rpg_150
+snd_explode_dist_far = mfs_team\weapons\distant_sounds\explossion_distant_rpg_250
 
 ;свойства которые читаются, но не используются (надо убрать)
 inv_name					= "Og-7b"

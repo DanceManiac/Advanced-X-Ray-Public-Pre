@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="st_game_window_name">
+		<text>Advanced X-Ray 1.4.80</text>
+	</string>
+	<string id="st_discord_menu">
+		<text>Главное Меню</text>
+	</string>
+	<string id="ui_mm_cam_fov">
+		<text>Поле зрения</text>
+	</string>
+	<string id="ui_mm_hud_fov">
+		<text>HUD FOV</text>
+	</string>
+	<string id="ui_mm_detail_radius">
+		<text>Дальность отр. травы</text>
+	</string>
+	<string id="ui_mm_detail_scale">
+		<text>Высота травы</text>
+	</string>
+	<string id="ui_mm_ssr_quality">
+		<text>Качество отражений</text>
+	</string>
+	<string id="dtssr_off">
+		<text>Отключено</text>
+	</string>
+	<string id="dtssr_lowest">
+		<text>Оч. низкое</text>
+	</string>
+	<string id="dtssr_low">
+		<text>Низкое</text>
+	</string>
+	<string id="dtssr_medium">
+		<text>Среднее</text>
+	</string>
+	<string id="dtssr_high">
+		<text>Высокое</text>
+	</string>
+	<string id="ui_mm_bloodmarks_on_skeleton">
+		<text>Блудмарки на трупах</text>
+	</string>
+	<string id="ui_mm_actor_shadow">
+		<text>Тень от ГГ</text>
+	</string>
+	<string id="ui_mm_mblur_enable">
+		<text>Motion Blur</text>
+	</string>
+	<string id="ui_mm_mblur">
+		<text>Инт. Motion Blur</text>
+	</string>
+	<string id="ui_mm_sunshafts_mode">
+		<text>Режим солн. лучей</text>
+	</string>
+	<string id="volumetric">
+		<text>Волюметрические</text>
+	</string>
+	<string id="screen_space">
+		<text>Screen Space</text>
+	</string>
+	<string id="ui_mm_raindrops">
+		<text>Эффект Raindrops</text>
+	</string>
+	<string id="ui_mm_sun_details">
+		<text>Тень от травы</text>
+	</string>
+	<string id="ui_mm_clr_drag_preset">
+		<text>Пресет Цветокоррекции</text>
+	</string>
+	<string id="Default_clr">
+		<text>Оригинальный</text>
+	</string>
+	<string id="Sepia">
+		<text>Сепия</text>
+	</string>
+	<string id="Gray_moss">
+		<text>Серый Мох</text>
+	</string>
+	<string id="Graphite_gray">
+		<text>Графитовый Серый</text>
+	</string>
+	<string id="Zone">
+		<text>Мрачная Зона</text>
+	</string>
+	<string id="Warm_tone">
+		<text>Тёплые Тона</text>
+	</string>
+	<string id="Blue">
+		<text>Оттенок Синего</text>
+	</string>
+	<string id="ui_mm_clr_red">
+		<text>Цветокоррекция: Красный</text>
+	</string>
+	<string id="ui_mm_clr_green">
+		<text>Цветокоррекция: Зелёный</text>
+	</string>
+	<string id="ui_mm_clr_blue">
+		<text>Цветокоррекция: Синий</text>
+	</string>
+	<string id="ui_st_corpse_collision">
+		<text>Коллизия трупов</text>
+	</string>
+	<string id="ui_mm_smap_size">
+		<text>Размер карты теней</text>
+	</string>
+	<string id="ui_mm_saturation">
+		<text>Насыщенность цветов</text>
+	</string>
+	<string id="ui_mm_r2_aa_mode">
+		<text>Тип доп. сглаживания</text>
+	</string>
+	<string id="opt_noaa">
+		<text>Отключено</text>
+	</string>
+	<string id="opt_smaa">
+		<text>SMAA</text>
+	</string>
+	<string id="opt_dlaa">
+		<text>DLAA</text>
+	</string>
+	<string id="opt_fxaa">
+		<text>FXAA</text>
+	</string>
+	<string id="ui_mm_vignette_effect">
+		<text>Эффект виньетки</text>
+	</string>
+	<string id="ui_mm_hud_mask">
+		<text>Динамический HUD масок</text>
+	</string>
+	<string id="ui_st_hud_collision">
+		<text>Коллизия HUD оружия</text>
+	</string>
+	<string id="camera_1">
+		<text>Вид от 1-ого лица</text>
+	</string>
+	<string id="camera_2">
+		<text>Вид от 2-ого лица</text>
+	</string>
+	<string id="camera_3">
+		<text>Вид от 3-ого лица</text>
+	</string>
+	<string id="ui_mm_quick_saves_count">
+		<text>Кол-во быстрых сохранений</text>
+	</string>
+	<string id="ui_st_loading_stages">
+		<text>Стадии загрузки игры</text>
+	</string>
+	<string id="ui_st_keypress_on_start">
+		<text>Автопауза после загрузки</text>
+	</string>
+	<string id="ui_mm_hud_dynamic_effects">
+		<text>Динамические эффекты HUD</text>
+	</string>
+	<string id="disabled">
+		<text>Отключено</text>
+	</string>
+	<string id="default">
+		<text>SSAO</text>
+	</string>
+	<string id="hdao">
+		<text>HDAO</text>
+	</string>
+	<string id="hbao">
+		<text>HBAO</text>
+	</string>
+	<string id="ssdo">
+		<text>SSDO</text>
+	</string>
+	<string id="ui_mm_snd_delay">
+		<text>Задержка звуков вдалеке</text>
+	</string>
+	<string id="kb_grp_auto">
+		<text>Транспорт</text>
+	</string>
+	<string id="kb_turn_engine">
+		<text>Завести двигатель</text>
+	</string>
+	<string id="kb_switch_horn">
+		<text>Посигналить</text>
+	</string>
+	<string id="ui_inv_battery">
+		<text>Заряд батареи</text>
+	</string>
+	<string id="ui_inv_max_charge">
+		<text>Макс. заряд</text>
+	</string>
+	<string id="ui_inv_uncharge_speed">
+		<text>Расход батареи</text>
+	</string>
+	<string id="st_battery">
+		<text>Батарейка</text>
+	</string>
+	<string id="st_battery_descr">
+		<text>Стандартная пальчиковая батарейка. Повсеместно применяется сталкерами для зарядки различных приборов.</text>
+	</string>
+	<string id="st_charge_item">
+		<text>Зарядить</text>
+	</string>
+	<string id="ui_st_walk_inertion">
+		<text>Инерция ходьбы героя</text>
+	</string>
+</string_table>

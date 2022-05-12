@@ -45,7 +45,6 @@
 #include "mp\teamdeathmatch_game.ltx"
 #include "mp\artefacthunt_game.ltx"
 #include "mp\capturetheartefact_game.ltx"
-#include "mp\anticheat_active_params.ltx"
 
 #include "evaluation.ltx"
 #include "fonts.ltx"
@@ -64,6 +63,9 @@
 #include "localization.ltx"
 
 #include "smart_cover.ltx"
+
+; M.F.S. Team
+#include "misc\backpacks.ltx"
 
 [zone_pick_dof]
 near 	= -70.0
@@ -110,8 +112,8 @@ take_dist   = 2
 max_weight    = 50
 max_ruck    = 56
 max_belt    = 5 ;16
-slots     = 11
-slots_count   = 12
+slots     = 15
+slots_count   = 16
 
 slot_persistent_1  	= true   ;knife
 slot_active_1  		= true
@@ -149,6 +151,18 @@ slot_active_11  	= true
 slot_persistent_12  	= false ;flare
 slot_active_12  	= false
 
+slot_persistent_13  	= false ;backpack
+
+slot_active_13      	= false
+
+slot_persistent_14  	= false ;dosimeter
+slot_active_14      	= false
+
+slot_persistent_15  	= false ;pants
+slot_active_15      	= false
+
+slot_persistent_16  	= false ;animation slot
+slot_active_16      	= false
 
 [lights_hanging_lamp]
 GroupControlSection = spawn_group
@@ -395,7 +409,6 @@ GroupControlSection =
 $spawn      = "ai\level changer"
 ;$prefetch    = 4
 class     = LVL_CHNG
-script_binding  = bind_level_changer.bind
 
 shape_transp_color    = 255, 255, 255, 100
 shape_edge_color    = 32, 32, 32, 255
