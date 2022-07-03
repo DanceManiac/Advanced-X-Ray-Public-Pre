@@ -32,7 +32,7 @@ How to Build
 Binaries
 --------
 
-See [Release](https://github.com/ign-1997/Advanced-X-Ray/releases) section.
+See [Release](https://github.com/ign-1997/Advanced-X-Ray-Public/releases) section.
 
 Thanks to
 ------------
