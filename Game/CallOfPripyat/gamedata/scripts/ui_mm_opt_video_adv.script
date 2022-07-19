@@ -111,6 +111,12 @@ function opt_video_adv:InitControls(x, y, xml, handler)
 	xml:InitStatic("video_adv:cap_r2_sun", _st)
 	ctl = xml:InitCheck("video_adv:check_r2_sun", _st)
 	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
+	
+--Статическое солнце
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_r2_static_sun", _st)
+	ctl = xml:InitCheck("video_adv:check_r2_static_sun", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
 
 	_st = xml:InitStatic("video_adv:templ_item", nil)
 	xml:InitStatic("video_adv:cap_light_distance", _st)
@@ -151,6 +157,12 @@ function opt_video_adv:InitControls(x, y, xml, handler)
 	xml:InitStatic("video_adv:cap_r1_detail_textures", _st)
 	ctl = xml:InitCheck("video_adv:check_r1_detail_textures", _st)
 	table.insert(handler.m_preconditions, {func=mode_1, control=_st})
+
+-- Использовать бампы
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_r2_use_bump", _st)
+	ctl = xml:InitCheck("video_adv:check_r2_use_bump", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
 
 -- r2_detail_bump			=>r2
 	_st = xml:InitStatic("video_adv:templ_item", nil)
@@ -248,6 +260,18 @@ function opt_video_adv:InitControls(x, y, xml, handler)
 	xml:InitCheck("video_adv:check_60hz", _st)
 	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
 
+--3D прицелы	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_3d_scopes_enable", _st)
+	ctl = xml:InitCheck("video_adv:check_3d_scopes_enable", _st)
+	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+
+--3D КПК	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_3d_pda_enable", _st)
+	ctl = xml:InitCheck("video_adv:check_3d_pda_enable", _st)
+	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+
 --Блудмарки на дин. объектах
 	_st = xml:InitStatic("video_adv:templ_item", nil)
 	xml:InitStatic("video_adv:cap_bloodmarks_on_skeleton", _st)
@@ -277,6 +301,18 @@ function opt_video_adv:InitControls(x, y, xml, handler)
 	xml:InitStatic("video_adv:cap_hud_dyn_effects", _st)
 	ctl = xml:InitCheck("video_adv:check_hud_dyn_effects", _st)
 	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
+
+--Шейдерный ПНВ	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_shader_nvg", _st)
+	ctl = xml:InitCheck("video_adv:check_shader_nvg", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_3, control=_st})
+
+--Псевдо ПБР
+	--[[_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_pbr", _st)
+	ctl = xml:InitCheck("video_adv:check_pbr", _st)
+	table.insert(handler.m_preconditions, {func=mode_ge_3, control=_st})]]--
 
 --Тип сглаживания	
 	_st = xml:InitStatic("video_adv:templ_item", nil)
@@ -311,6 +347,24 @@ function opt_video_adv:InitControls(x, y, xml, handler)
 
 	btn = xml:Init3tButton("video_adv:btn_to_simply", self)
 	handler:Register(btn, "btn_simply_graphic")
+	
+--Оптимизация статической геометрии	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_optimize_static_geom", _st)
+	xml:InitTrackBar("video_adv:track_optimize_static_geom", _st)
+	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+	
+--Оптимизация динамической геометрии	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_optimize_dynamic_geom", _st)
+	xml:InitTrackBar("video_adv:track_optimize_dynamic_geom", _st)
+	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+	
+--Оптимизация теневых карт	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_optimize_shadow_geom", _st)
+	ctl = xml:InitCheck("video_adv:check_optimize_shadow_geom", _st)
+	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
 
 --Цветокоррекция: Интенсивность красного
 	_st = xml:InitStatic("video_adv:templ_item", nil)

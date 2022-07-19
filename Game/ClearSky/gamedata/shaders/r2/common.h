@@ -49,6 +49,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////
 uniform half4 				 u_weather; // .xyz - sky color, .w - rain line param
 uniform half4 				 lowland_fog_params; // x - low fog height, y - low fog density, z - base height, w - null
+uniform float4				 screen_res;
 uniform half4                hemi_cube_pos_faces;
 uniform half4                hemi_cube_neg_faces;
 uniform half4                L_material;                            // 0,0,0,mid
@@ -319,6 +320,16 @@ half Contrast(half Input, half ContrastPower)
 inline bool isSecondVPActive()
 {
 	return (m_blender_mode.z == 1.f);
+}
+
+float rand(float n)
+{
+    return frac(cos(n)*343.42);
+}
+
+float noise(float2 tc)
+{
+    return frac(sin(dot(tc, float2(12.0, 78.0) + (timers.x) )) * 43758.0)*0.25f; 
 }
 
 #define FXPS technique _render{pass _code{PixelShader=compile ps_3_0 main();}}

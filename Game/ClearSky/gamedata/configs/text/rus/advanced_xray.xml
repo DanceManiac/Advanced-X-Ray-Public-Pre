@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
 	<string id="st_game_window_name">
-		<text>Advanced X-Ray 1.4.80</text>
+		<text>Advanced X-Ray</text>
 	</string>
 	<string id="st_discord_menu">
 		<text>Главное Меню</text>
@@ -56,6 +56,9 @@
 	</string>
 	<string id="screen_space">
 		<text>Screen Space</text>
+	</string>
+	<string id="combine_sunshafts">
+		<text>Комбинированные</text>
 	</string>
 	<string id="ui_mm_raindrops">
 		<text>Эффект Raindrops</text>
@@ -209,5 +212,77 @@
 	</string>
 	<string id="ui_st_walk_inertion">
 		<text>Инерция ходьбы героя</text>
+	</string>
+	<string id="ui_inv_thirst">
+		<text>Утоление жажды</text>
+	</string>
+	<string id="ui_mm_3d_scopes">
+		<text>3D Прицелы</text>
+	</string>
+	<string id="ui_inv_artefact_charge">
+		<text>Заряд артефакта</text>
+	</string>
+	<string id="ui_walk_accel">
+		<text>Скорость</text>
+	</string>
+	<string id="ui_jump_speed">
+		<text>Высота прыжка</text>
+	</string>
+	<string id="ui_mm_crosshair_type">
+		<text>Тип перекрестия прицела</text>
+	</string>
+	<string id="default_crosshair">
+		<text>Стандартный</text>
+	</string>
+	<string id="builds_crosshair">
+		<text>Билдовский</text>
+	</string>
+	<string id="point_crosshair">
+		<text>Точка</text>
+	</string>
+	<string id="ui_mm_snd_precache">
+		<text>Предзагрузка звуков</text>
+	</string>
+	<string id="ui_mm_shader_nvg">
+		<text>Шейдерный ПНВ</text>
+	</string>
+	<string id="ui_mm_pbr">
+		<text>Псевдо PBR</text>
+	</string>
+	<string id="ui_mm_3d_pda">
+		<text>3D КПК</text>
+	</string>
+	<string id="ui_inv_intoxication">
+		<text>Интоксикация</text>
+	</string>
+	<string id="ui_inv_sleepeness">
+		<text>Сонливость</text>
+	</string>
+	<string id="ui_mm_r2_use_bump">
+		<text>Использовать бампы</text>
+	</string>
+	<string id="st_bolt_descr">
+		<text>Металлическое крепёжное изделие в виде стержня с наружной резьбой и шестигранной головкой под гаечный ключ. Используется сталкерами для обнаружения, определения границ и разрядки аномалий, а также для обнаружения мин.</text>
+	</string>
+	<string id="ui_mm_optimize_static_geom">
+		<text>Оптим. дин. геометрии</text>
+	</string>
+	<string id="ui_mm_optimize_dynamic_geom">
+		<text>Оптим. стат. геометрии</text>
+	</string>
+	<string id="ui_mm_optimize_shadow_geom">
+		<text>Оптимизация карт теней</text>
+	</string>
+	<string id="ui_mm_r2_static_sun">
+		<text>Статическое солнце</text>
+	</string>
+	<string id="ui_inv_af_radius">
+		<text>Радиус действия</text>
+	</string>
+	<string id="ui_inv_af_vis_radius">
+		<text>Радиус обнаружения</text>
+	</string>
+	<string id="ui_mm_snd_targets">
+		<text>Источники звука</text>
 	</string>
 </string_table>

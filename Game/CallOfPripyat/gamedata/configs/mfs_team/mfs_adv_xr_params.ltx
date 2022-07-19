@@ -1,6 +1,7 @@
 [global]
 engine_mode = cop 			;; Режим работы движка cop|cs (Зов Припяти|Чистое Небо)
-discord_app_id = 745402574810906675	;; ID приложения для Discord Rich Presense
+discord_app_id = 745606008499601438	;; ID приложения для Discord Rich Presense
+discord_show_task = true		;; Выводить в статус Дискорда текущий квест
 ls_tips_enabled = true			;; Включены ли 100 советов по выживанию в Зоне
 developer_mode = false			;; Режим разработчика (больше команд, телепортация в демо рекорде, редактор погоды)
 
@@ -15,6 +16,13 @@ torch_use_battery = false		;; Ограниченный заряд фонаря
 artefact_detector_use_battery = false	;; Ограниченный заряд детектора артефактов
 anomaly_detector_use_battery = false	;; Ограниченный заряд детектора аномалий
 limited_bolts = false			;; Лимитированные болты
+actor_thirst_enabled = false		;; Жажда ГГ
+actor_intoxication_enabled = false	;; Интоксикация ГГ
+actor_sleepeness_enabled = false	;; Потребность ГГ во сне
+artefacts_degradation = false		;; Деградация артефактов на поясе
+multi_item_pickup = true		;; Подбор сразу нескольких предметов
+show_wpn_info = true			;; Показывать характеристики оружия
+jump_and_speed_weight_calc = false	;; Снижение скорости передвижений и высоты прыжков от веса в рюкзаке
 
 [inventory]
 enable_knife_slot = false		;; Включен ли слот ножа
@@ -25,3 +33,12 @@ enable_second_helmet_slot = false	;; Включен ли слот второго шлема
 enable_dosimeter_slot = false		;; Включен ли слот дозиметра
 enable_pants_slot = false		;; Включен ли слот штанов
 enable_pda_slot = false			;; Включен ли слот КПК
+
+[start_settings];Стартовые значения необходимых настроек
+tonemap_middlegray = 0.95
+tonemap_adaptation = 1.0
+tonemap_low_lum = 0.0035
+tonemap_amount = 0.7
+sun_lumscale = 1.0
+sun_lumscale_hemi = 1.0
+sun_lumscale_amb = 1.0

@@ -1,4 +1,5 @@
 #include "common.h"
+#include "anomaly_shaders.h"
 
 //#define USE_SUPER_SPECULAR
 //#define USE_ORIGINAL_SSAO
@@ -6,6 +7,7 @@
 
 #include "lmodel.h"
 #include "hmodel.h"
+#include "night_vision.h"
 
 float compute_height_fog(float3 P_view)
 {
@@ -142,7 +144,7 @@ _out main ( _input I, uint iSample : SV_SAMPLEINDEX )
 	float sun_occ = P.w*2;
 
 	mtl = xmaterial;
-	L += Ldynamic_color * sun_occ * plight_infinity	(mtl, P.xyz, N.xyz, Ldynamic_dir);
+	L += Ldynamic_color * sun_occ * plight_infinity	(mtl, P.xyz, N.xyz, 0, Ldynamic_dir);
 #endif
 
 	// hemisphere
@@ -199,10 +201,9 @@ _out main ( _input I, uint iSample : SV_SAMPLEINDEX )
 	hdiffuse *= occ;
 	hspecular *= occ;
 
-        float4         light       = float4         (L.rgb + hdiffuse, L.w)        ;
-        float4         C           = D*light       ;                             // rgb.gloss * light(diffuse.specular)
-//        float3         spec        = (C.rgb*.5h + .5h)*C.w + hspecular + hspecular + hspecular;			// replicated specular
-		float3 spec 				= C.www * L.rgb + hspecular * C.rgba; // replicated specular
+    float4         light       = float4(L.rgb + hdiffuse, L.w);
+	float4         C           = D*light;                             
+	float3 spec 				= C.www * L.rgb + hspecular * C.rgba; // replicated specular
 
 #ifdef         USE_SUPER_SPECULAR
                       spec      = (C.rgb*.5h + .5h)*C.w + hspecular        ;
@@ -268,9 +269,11 @@ _out main ( _input I, uint iSample : SV_SAMPLEINDEX )
 //		color = occ; // holger test
 		//color = gbd.N;
         _out        	o;
-        tonemap        	(o.low, o.high, color, tm_scale )	;
-                        o.low.a         = skyblend	;
-						o.high.a		= skyblend	;
+		
+		tonemap        	(o.low, o.high, color, tm_scale )	;
+        o.low.a         = skyblend;
+		o.high.a		= skyblend;
+		
 //		o.low	= skyblend;
 //		o.hight	= 0;
 

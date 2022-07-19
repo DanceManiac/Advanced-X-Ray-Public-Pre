@@ -11,6 +11,8 @@ uniform float4x4 	L_dynamic_xform;
 uniform float4x4	m_plmap_xform;
 uniform float4 		m_plmap_clamp	[2];	// 0.w = factor
 
+uniform	float4		screen_res;
+
 half  	calc_fogging 	(half4 w_pos)	{ return dot(w_pos,fog_plane); 	}
 half2 	calc_detail 	(half3 w_pos)	{ 
 	float  	dtl	= distance(w_pos,eye_position)*dt_params.w;
@@ -120,6 +122,16 @@ half3	p_hemi		(float2 tc) 	{
 	//return  dot	(t_lmh,1.h/3.h);
 	half4	t_lmh 	= tex2D		(s_hemi, tc);
 	return  t_lmh.a;
+}
+
+float rand(float n)
+{
+    return frac(cos(n)*343.42);
+}
+
+float noise(float2 tc)
+{
+    return frac(sin(dot(tc, float2(12.0, 78.0) + (timers.x) )) * 43758.0)*0.25f; 
 }
 
 #endif // COMMON_H

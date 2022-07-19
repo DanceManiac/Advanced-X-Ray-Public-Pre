@@ -1032,6 +1032,18 @@ end
 function on_actor_satiety()
 end
 
+--' Жажда
+function on_actor_thirst()
+end
+
+--' Интоксикация
+function on_actor_intoxication()
+end
+
+--' Сонливость
+function on_actor_sleepeness()
+end
+
 --' іадиация
 function on_actor_radiation()
 

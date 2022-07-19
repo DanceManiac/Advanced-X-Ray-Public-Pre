@@ -1,6 +1,6 @@
-uniform	float4		screen_res;
-uniform	sampler2D	s_occ;
+#include "common.h"
 
+uniform	sampler2D	s_occ;
 
 half ssao_blur_ps(half2 centerTC)
 {

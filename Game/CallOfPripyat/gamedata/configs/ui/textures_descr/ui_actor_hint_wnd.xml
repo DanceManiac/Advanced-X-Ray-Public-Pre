@@ -120,5 +120,17 @@
 	    <texture id="ui_inGame2_circle_TorchLowBattery_yellow" 		x="0" y="38" width="33" height="35" />
 	    <texture id="ui_inGame2_circle_TorchLowBattery_orange" 		x="0" y="76" width="33" height="35" />
 	    <texture id="ui_inGame2_circle_TorchLowBattery_red" 		x="0" y="114" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_thirst_green" 				x="36" y="0" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_thirst_yellow" 				x="36" y="38" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_thirst_orange" 				x="36" y="76" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_thirst_red" 					x="36" y="114" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_intoxication_green" 			x="71" y="0" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_intoxication_yellow" 		x="71" y="38" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_intoxication_orange" 		x="71" y="76" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_intoxication_red" 			x="71" y="114" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_sleepeness_green" 			x="107" y="0" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_sleepeness_yellow" 			x="107" y="38" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_sleepeness_orange" 			x="107" y="76" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_sleepeness_red" 				x="107" y="114" width="33" height="35" />
 	</file>
 </w>

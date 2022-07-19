@@ -58,5 +58,12 @@
 		<texture id="ui_item_battery_icon" x="0" y="0" width="19" height="19" />
 		<texture id="ui_item_battery_uncharge_icon" x="19" y="0" width="19" height="19" />
 		<texture id="ui_item_battery_max_icon" x="38" y="0" width="19" height="19" />
+		<texture id="ui_mfs_thirst_restore_speed" x="57" y="0" width="19" height="19" />
+		<texture id="ui_mfs_item_effectiveness" x="76" y="0" width="19" height="19" />
+		<texture id="ui_mfs_item_walk_accel" x="95" y="0" width="19" height="19" />
+		<texture id="ui_mfs_item_jump_speed" x="114" y="0" width="19" height="19" />
+		<texture id="ui_mfs_intoxication_restore_speed" x="133" y="0" width="19" height="19" />
+		<texture id="ui_mfs_sleepeness_restore_speed" x="152" y="0" width="19" height="19" />
+		<texture id="ui_item_af_radius" x="171" y="0" width="19" height="19" />
    </file>
 </w>
