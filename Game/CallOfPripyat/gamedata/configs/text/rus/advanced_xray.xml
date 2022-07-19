@@ -4,112 +4,112 @@
 		<text>Advanced X-Ray 1.4.80</text>
 	</string>
 	<string id="st_discord_menu">
-		<text>Р“Р»Р°РІРЅРѕРµ РњРµРЅСЋ</text>
+		<text>Главное Меню</text>
 	</string>
 	<string id="ui_mm_cam_fov">
-		<text>РџРѕР»Рµ Р·СЂРµРЅРёСЏ</text>
+		<text>Поле зрения</text>
 	</string>
 	<string id="ui_mm_hud_fov">
 		<text>HUD FOV</text>
 	</string>
 	<string id="ui_mm_detail_radius">
-		<text>Р”Р°Р»СЊРЅРѕСЃС‚СЊ РѕС‚СЂ. С‚СЂР°РІС‹</text>
+		<text>Дальность отр. травы</text>
 	</string>
 	<string id="ui_mm_detail_scale">
-		<text>Р’С‹СЃРѕС‚Р° С‚СЂР°РІС‹</text>
+		<text>Высота травы</text>
 	</string>
 	<string id="ui_mm_ssr_quality">
-		<text>РљР°С‡РµСЃС‚РІРѕ РѕС‚СЂР°Р¶РµРЅРёР№</text>
+		<text>Качество отражений</text>
 	</string>
 	<string id="dtssr_off">
-		<text>РћС‚РєР»СЋС‡РµРЅРѕ</text>
+		<text>Отключено</text>
 	</string>
 	<string id="dtssr_lowest">
-		<text>РћС‡. РЅРёР·РєРѕРµ</text>
+		<text>Оч. низкое</text>
 	</string>
 	<string id="dtssr_low">
-		<text>РќРёР·РєРѕРµ</text>
+		<text>Низкое</text>
 	</string>
 	<string id="dtssr_medium">
-		<text>РЎСЂРµРґРЅРµРµ</text>
+		<text>Среднее</text>
 	</string>
 	<string id="dtssr_high">
-		<text>Р’С‹СЃРѕРєРѕРµ</text>
+		<text>Высокое</text>
 	</string>
 	<string id="ui_mm_bloodmarks_on_skeleton">
-		<text>Р‘Р»СѓРґРјР°СЂРєРё РЅР° С‚СЂСѓРїР°С…</text>
+		<text>Блудмарки на трупах</text>
 	</string>
 	<string id="ui_mm_actor_shadow">
-		<text>РўРµРЅСЊ РѕС‚ Р“Р“</text>
+		<text>Тень от ГГ</text>
 	</string>
 	<string id="ui_mm_mblur_enable">
 		<text>Motion Blur</text>
 	</string>
 	<string id="ui_mm_mblur">
-		<text>РРЅС‚. Motion Blur</text>
+		<text>Инт. Motion Blur</text>
 	</string>
 	<string id="ui_mm_sunshafts_mode">
-		<text>Р РµР¶РёРј СЃРѕР»РЅ. Р»СѓС‡РµР№</text>
+		<text>Режим солн. лучей</text>
 	</string>
 	<string id="volumetric">
-		<text>Р’РѕР»СЋРјРµС‚СЂРёС‡РµСЃРєРёРµ</text>
+		<text>Волюметрические</text>
 	</string>
 	<string id="screen_space">
 		<text>Screen Space</text>
 	</string>
 	<string id="ui_mm_raindrops">
-		<text>Р­С„С„РµРєС‚ Raindrops</text>
+		<text>Эффект Raindrops</text>
 	</string>
 	<string id="ui_mm_sun_details">
-		<text>РўРµРЅСЊ РѕС‚ С‚СЂР°РІС‹</text>
+		<text>Тень от травы</text>
 	</string>
 	<string id="ui_mm_clr_drag_preset">
-		<text>РџСЂРµСЃРµС‚ Р¦РІРµС‚РѕРєРѕСЂСЂРµРєС†РёРё</text>
+		<text>Пресет Цветокоррекции</text>
 	</string>
 	<string id="Default_clr">
-		<text>РћСЂРёРіРёРЅР°Р»СЊРЅС‹Р№</text>
+		<text>Оригинальный</text>
 	</string>
 	<string id="Sepia">
-		<text>РЎРµРїРёСЏ</text>
+		<text>Сепия</text>
 	</string>
 	<string id="Gray_moss">
-		<text>РЎРµСЂС‹Р№ РњРѕС…</text>
+		<text>Серый Мох</text>
 	</string>
 	<string id="Graphite_gray">
-		<text>Р“СЂР°С„РёС‚РѕРІС‹Р№ РЎРµСЂС‹Р№</text>
+		<text>Графитовый Серый</text>
 	</string>
 	<string id="Zone">
-		<text>РњСЂР°С‡РЅР°СЏ Р—РѕРЅР°</text>
+		<text>Мрачная Зона</text>
 	</string>
 	<string id="Warm_tone">
-		<text>РўС‘РїР»С‹Рµ РўРѕРЅР°</text>
+		<text>Тёплые Тона</text>
 	</string>
 	<string id="Blue">
-		<text>РћС‚С‚РµРЅРѕРє РЎРёРЅРµРіРѕ</text>
+		<text>Оттенок Синего</text>
 	</string>
 	<string id="ui_mm_clr_red">
-		<text>Р¦РІРµС‚РѕРєРѕСЂСЂРµРєС†РёСЏ: РљСЂР°СЃРЅС‹Р№</text>
+		<text>Цветокоррекция: Красный</text>
 	</string>
 	<string id="ui_mm_clr_green">
-		<text>Р¦РІРµС‚РѕРєРѕСЂСЂРµРєС†РёСЏ: Р—РµР»С‘РЅС‹Р№</text>
+		<text>Цветокоррекция: Зелёный</text>
 	</string>
 	<string id="ui_mm_clr_blue">
-		<text>Р¦РІРµС‚РѕРєРѕСЂСЂРµРєС†РёСЏ: РЎРёРЅРёР№</text>
+		<text>Цветокоррекция: Синий</text>
 	</string>
 	<string id="ui_st_corpse_collision">
-		<text>РљРѕР»Р»РёР·РёСЏ С‚СЂСѓРїРѕРІ</text>
+		<text>Коллизия трупов</text>
 	</string>
 	<string id="ui_mm_smap_size">
-		<text>Р Р°Р·РјРµСЂ РєР°СЂС‚С‹ С‚РµРЅРµР№</text>
+		<text>Размер карты теней</text>
 	</string>
 	<string id="ui_mm_saturation">
-		<text>РќР°СЃС‹С‰РµРЅРЅРѕСЃС‚СЊ С†РІРµС‚РѕРІ</text>
+		<text>Насыщенность цветов</text>
 	</string>
 	<string id="ui_mm_r2_aa_mode">
-		<text>РўРёРї РґРѕРї. СЃРіР»Р°Р¶РёРІР°РЅРёСЏ</text>
+		<text>Тип доп. сглаживания</text>
 	</string>
 	<string id="opt_noaa">
-		<text>РћС‚РєР»СЋС‡РµРЅРѕ</text>
+		<text>Отключено</text>
 	</string>
 	<string id="opt_smaa">
 		<text>SMAA</text>
@@ -121,37 +121,37 @@
 		<text>FXAA</text>
 	</string>
 	<string id="ui_mm_vignette_effect">
-		<text>Р­С„С„РµРєС‚ РІРёРЅСЊРµС‚РєРё</text>
+		<text>Эффект виньетки</text>
 	</string>
 	<string id="ui_mm_hud_mask">
-		<text>Р”РёРЅР°РјРёС‡РµСЃРєРёР№ HUD РјР°СЃРѕРє</text>
+		<text>Динамический HUD масок</text>
 	</string>
 	<string id="ui_st_hud_collision">
-		<text>РљРѕР»Р»РёР·РёСЏ HUD РѕСЂСѓР¶РёСЏ</text>
+		<text>Коллизия HUD оружия</text>
 	</string>
 	<string id="camera_1">
-		<text>Р’РёРґ РѕС‚ 1-РѕРіРѕ Р»РёС†Р°</text>
+		<text>Вид от 1-ого лица</text>
 	</string>
 	<string id="camera_2">
-		<text>Р’РёРґ РѕС‚ 2-РѕРіРѕ Р»РёС†Р°</text>
+		<text>Вид от 2-ого лица</text>
 	</string>
 	<string id="camera_3">
-		<text>Р’РёРґ РѕС‚ 3-РѕРіРѕ Р»РёС†Р°</text>
+		<text>Вид от 3-ого лица</text>
 	</string>
 	<string id="ui_mm_quick_saves_count">
-		<text>РљРѕР»-РІРѕ Р±С‹СЃС‚СЂС‹С… СЃРѕС…СЂР°РЅРµРЅРёР№</text>
+		<text>Кол-во быстрых сохранений</text>
 	</string>
 	<string id="ui_st_loading_stages">
-		<text>РЎС‚Р°РґРёРё Р·Р°РіСЂСѓР·РєРё РёРіСЂС‹</text>
+		<text>Стадии загрузки игры</text>
 	</string>
 	<string id="ui_st_keypress_on_start">
-		<text>РђРІС‚РѕРїР°СѓР·Р° РїРѕСЃР»Рµ Р·Р°РіСЂСѓР·РєРё</text>
+		<text>Автопауза после загрузки</text>
 	</string>
 	<string id="ui_mm_hud_dynamic_effects">
-		<text>Р”РёРЅР°РјРёС‡РµСЃРєРёРµ СЌС„С„РµРєС‚С‹ HUD</text>
+		<text>Динамические эффекты HUD</text>
 	</string>
 	<string id="disabled">
-		<text>РћС‚РєР»СЋС‡РµРЅРѕ</text>
+		<text>Отключено</text>
 	</string>
 	<string id="default">
 		<text>SSAO</text>
@@ -166,36 +166,36 @@
 		<text>SSDO</text>
 	</string>
 	<string id="ui_mm_snd_delay">
-		<text>Р—Р°РґРµСЂР¶РєР° Р·РІСѓРєРѕРІ РІРґР°Р»РµРєРµ</text>
+		<text>Задержка звуков вдалеке</text>
 	</string>
 	<string id="kb_grp_auto">
-		<text>РўСЂР°РЅСЃРїРѕСЂС‚</text>
+		<text>Транспорт</text>
 	</string>
 	<string id="kb_turn_engine">
-		<text>Р—Р°РІРµСЃС‚Рё РґРІРёРіР°С‚РµР»СЊ</text>
+		<text>Завести двигатель</text>
 	</string>
 	<string id="kb_switch_horn">
-		<text>РџРѕСЃРёРіРЅР°Р»РёС‚СЊ</text>
+		<text>Посигналить</text>
 	</string>
 	<string id="ui_inv_battery">
-		<text>Р—Р°СЂСЏРґ Р±Р°С‚Р°СЂРµРё</text>
+		<text>Заряд батареи</text>
 	</string>
 	<string id="ui_inv_max_charge">
-		<text>РњР°РєСЃ. Р·Р°СЂСЏРґ</text>
+		<text>Макс. заряд</text>
 	</string>
 	<string id="ui_inv_uncharge_speed">
-		<text>Р Р°СЃС…РѕРґ Р±Р°С‚Р°СЂРµРё</text>
+		<text>Расход батареи</text>
 	</string>
 	<string id="st_battery">
-		<text>Р‘Р°С‚Р°СЂРµР№РєР°</text>
+		<text>Батарейка</text>
 	</string>
 	<string id="st_battery_descr">
-		<text>РЎС‚Р°РЅРґР°СЂС‚РЅР°СЏ РїР°Р»СЊС‡РёРєРѕРІР°СЏ Р±Р°С‚Р°СЂРµР№РєР°. РџРѕРІСЃРµРјРµСЃС‚РЅРѕ РїСЂРёРјРµРЅСЏРµС‚СЃСЏ СЃС‚Р°Р»РєРµСЂР°РјРё РґР»СЏ Р·Р°СЂСЏРґРєРё СЂР°Р·Р»РёС‡РЅС‹С… РїСЂРёР±РѕСЂРѕРІ.</text>
+		<text>Стандартная пальчиковая батарейка. Повсеместно применяется сталкерами для зарядки различных приборов.</text>
 	</string>
 	<string id="st_charge_item">
-		<text>Р—Р°СЂСЏРґРёС‚СЊ</text>
+		<text>Зарядить</text>
 	</string>
 	<string id="ui_st_walk_inertion">
-		<text>РРЅРµСЂС†РёСЏ С…РѕРґСЊР±С‹ РіРµСЂРѕСЏ</text>
+		<text>Инерция ходьбы героя</text>
 	</string>
 </string_table>

@@ -1,216 +1,216 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
 	<string id="kb_active_jobs">
-		<text>РљРџРљ</text>
+		<text>КПК</text>
 	</string>
 	<string id="kb_alife_command">
-		<text>РџСЂРёРєР°Р· Р°С‚Р°РєРѕРІР°С‚СЊ</text>
+		<text>Приказ атаковать</text>
 	</string>
 	<string id="kb_always_run">
-		<text>РЁР°Рі</text>
+		<text>Шаг</text>
 	</string>
 	<string id="kb_artefact">
-		<text>РђСЂС‚РµС„Р°РєС‚</text>
+		<text>Артефакт</text>
 	</string>
 	<string id="kb_backward">
-		<text>РќР°Р·Р°Рґ</text>
+		<text>Назад</text>
 	</string>
 	<string id="kb_binoculars">
-		<text>Р‘РёРЅРѕРєР»СЊ</text>
+		<text>Бинокль</text>
 	</string>
 	<string id="kb_buy_menu">
-		<text>РњРµРЅСЋ РїРѕРєСѓРїРєРё</text>
+		<text>Меню покупки</text>
 	</string>
 	<string id="kb_chat">
-		<text>Р§Р°С‚</text>
+		<text>Чат</text>
 	</string>
 	<string id="kb_chat_team">
-		<text>РљРѕРјР°РЅРґРЅС‹Р№ С‡Р°С‚</text>
+		<text>Командный чат</text>
 	</string>
 	<string id="kb_console">
-		<text>РљРѕРЅСЃРѕР»СЊ</text>
+		<text>Консоль</text>
 	</string>
 	<string id="kb_contacts">
-		<text>РљРѕРЅС‚Р°РєС‚С‹ РІ РљРџРљ</text>
+		<text>Контакты в КПК</text>
 	</string>
 	<string id="kb_crouch">
-		<text>РџСЂРёСЃРµСЃС‚СЊ</text>
+		<text>Присесть</text>
 	</string>
 	<string id="kb_crouch_toggle">
-		<text>Р’СЃРµРіРґР° РїСЂРёСЃРµРІ</text>
+		<text>Всегда присев</text>
 	</string>
 	<string id="kb_down">
-		<text>Р’РЅРёР·</text>
+		<text>Вниз</text>
 	</string>
 	<string id="kb_drop">
-		<text>Р’С‹Р»РѕР¶РёС‚СЊ</text>
+		<text>Выложить</text>
 	</string>
 	<string id="kb_fire">
-		<text>РћРіРѕРЅСЊ</text>
+		<text>Огонь</text>
 	</string>
 	<string id="kb_firemode_next">
-		<text>Р РµР¶РёРј СЃС‚СЂРµР»СЊР±С‹ СЃР»РµРґ.</text>
+		<text>Режим стрельбы след.</text>
 	</string>
 	<string id="kb_firemode_prev">
-		<text>Р РµР¶РёРј СЃС‚СЂРµР»СЊР±С‹ РїСЂРµРґ.</text>
+		<text>Режим стрельбы пред.</text>
 	</string>
 	<string id="kb_forward">
-		<text>Р’РїРµСЂС‘Рґ</text>
+		<text>Вперёд</text>
 	</string>
 	<string id="kb_func">
-		<text>РџРѕРґСЃС‚РІРѕР»СЊРЅРёРє</text>
+		<text>Подствольник</text>
 	</string>
 	<string id="kb_grp_common">
-		<text>РћР±С‰РµРµ</text>
+		<text>Общее</text>
 	</string>
 	<string id="kb_grp_direction">
-		<text>РќР°РїСЂР°РІР»РµРЅРёРµ</text>
+		<text>Направление</text>
 	</string>
 	<string id="kb_grp_inventory">
-		<text>РРЅРІРµРЅС‚Р°СЂСЊ</text>
+		<text>Инвентарь</text>
 	</string>
 	<string id="kb_grp_movement">
-		<text>Р”РІРёР¶РµРЅРёРµ</text>
+		<text>Движение</text>
 	</string>
 	<string id="kb_grp_multiplayer">
-		<text>РЎРµС‚РµРІР°СЏ РёРіСЂР°</text>
+		<text>Сетевая игра</text>
 	</string>
 	<string id="kb_grp_weapons">
-		<text>РћСЂСѓР¶РёРµ</text>
+		<text>Оружие</text>
 	</string>
 	<string id="kb_inventory">
-		<text>РРЅРІРµРЅС‚Р°СЂСЊ</text>
+		<text>Инвентарь</text>
 	</string>
 	<string id="kb_jump">
-		<text>РџСЂС‹Р¶РѕРє</text>
+		<text>Прыжок</text>
 	</string>
 	<string id="kb_left">
-		<text>Р’Р»РµРІРѕ</text>
+		<text>Влево</text>
 	</string>
 	<string id="kb_left_lookout">
-		<text>Р’С‹РіР»СЏРЅСѓС‚СЊ РІР»РµРІРѕ</text>
+		<text>Выглянуть влево</text>
 	</string>
 	<string id="kb_left_strafe">
-		<text>РЁР°Рі РІР»РµРІРѕ</text>
+		<text>Шаг влево</text>
 	</string>
 	<string id="kb_map">
-		<text>РљР°СЂС‚Р° РІ РљРџРљ</text>
+		<text>Карта в КПК</text>
 	</string>
 	<string id="kb_next_slot">
-		<text>РћСЂСѓР¶РёРµ РёР· СЃР»РµРґСѓСЋС‰РµРіРѕ СЃР»РѕС‚Р°</text>
+		<text>Оружие из следующего слота</text>
 	</string>
 	<string id="kb_night_vision">
-		<text>РџСЂРёР±РѕСЂ РЅРѕС‡РЅРѕРіРѕ РІРёРґРµРЅРёСЏ</text>
+		<text>Прибор ночного видения</text>
 	</string>
 	<string id="kb_pause">
-		<text>РџР°СѓР·Р°</text>
+		<text>Пауза</text>
 	</string>
 	<string id="kb_pda">
-		<text>РљРџРљ</text>
+		<text>КПК</text>
 	</string>
 	<string id="kb_prev_slot">
-		<text>РћСЂСѓР¶РёРµ РёР· РїСЂРµРґС‹РґСѓС‰РµРіРѕ СЃР»РѕС‚Р°</text>
+		<text>Оружие из предыдущего слота</text>
 	</string>
 	<string id="kb_quit">
-		<text>Р’С‹С…РѕРґ</text>
+		<text>Выход</text>
 	</string>
 	<string id="kb_reload">
-		<text>РџРµСЂРµР·Р°СЂСЏРґРёС‚СЊ</text>
+		<text>Перезарядить</text>
 	</string>
 	<string id="kb_repair">
-		<text>РџРѕС‡РёРЅРёС‚СЊ</text>
+		<text>Починить</text>
 	</string>
 	<string id="kb_right">
-		<text>Р’РїСЂР°РІРѕ</text>
+		<text>Вправо</text>
 	</string>
 	<string id="kb_right_lookout">
-		<text>Р’С‹РіР»СЏРЅСѓС‚СЊ РІРїСЂР°РІРѕ</text>
+		<text>Выглянуть вправо</text>
 	</string>
 	<string id="kb_right_strafe">
-		<text>РЁР°Рі РІРїСЂР°РІРѕ</text>
+		<text>Шаг вправо</text>
 	</string>
 	<string id="kb_scores">
-		<text>РћС‡РєРё</text>
+		<text>Очки</text>
 	</string>
 	<string id="kb_screenshot">
-		<text>РЎРєСЂРёРЅС€РѕС‚</text>
+		<text>Скриншот</text>
 	</string>
 	<string id="kb_skin_menu">
-		<text>РњРµРЅСЋ РІС‹Р±РѕСЂР° РјРѕРґРµР»Рё</text>
+		<text>Меню выбора модели</text>
 	</string>
 	<string id="kb_sprint">
-		<text>Р‘РµРі</text>
+		<text>Бег</text>
 	</string>
 	<string id="kb_team_menu">
-		<text>РњРµРЅСЋ РІС‹Р±РѕСЂР° РєРѕРјР°РЅРґС‹</text>
+		<text>Меню выбора команды</text>
 	</string>
 	<string id="kb_torch">
-		<text>Р¤РѕРЅР°СЂРёРє</text>
+		<text>Фонарик</text>
 	</string>
 	<string id="kb_turn_engine">
-		<text>Р—Р°РІРµСЃС‚Рё РґРІРёРіР°С‚РµР»СЊ</text>
+		<text>Завести двигатель</text>
 	</string>
 	<string id="kb_switch_horn">
-		<text>РџРѕСЃРёРіРЅР°Р»РёС‚СЊ</text>
+		<text>Посигналить</text>
 	</string>
 	<string id="kb_up">
-		<text>Р’РІРµСЂС…</text>
+		<text>Вверх</text>
 	</string>
 	<string id="kb_use">
-		<text>РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ</text>
+		<text>Использовать</text>
 	</string>
 	<string id="kb_use_bandage">
-		<text>Р‘С‹СЃС‚СЂ. РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ Р±РёРЅС‚Р°</text>
+		<text>Быстр. использование бинта</text>
 	</string>
 	<string id="kb_use_medkit">
-		<text>Р‘С‹СЃС‚СЂ. РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ Р°РїС‚РµС‡РєРё</text>
+		<text>Быстр. использование аптечки</text>
 	</string>
 	<string id="kb_vote_begin">
-		<text>РќР°С‡Р°С‚СЊ РіРѕР»РѕСЃРѕРІР°РЅРёРµ</text>
+		<text>Начать голосование</text>
 	</string>
 	<string id="kb_vote_menu">
-		<text>РџСЂРѕРіРѕР»РѕСЃРѕРІР°С‚СЊ</text>
+		<text>Проголосовать</text>
 	</string>
 	<string id="kb_vote_no">
-		<text>РџСЂРѕРіРѕР»РѕСЃРѕРІР°С‚СЊ В«РќРµС‚В»</text>
+		<text>Проголосовать «Нет»</text>
 	</string>
 	<string id="kb_vote_yes">
-		<text>РџСЂРѕРіРѕР»РѕСЃРѕРІР°С‚СЊ В«Р”Р°В»</text>
+		<text>Проголосовать «Да»</text>
 	</string>
 	<string id="kb_weapon1">
-		<text>РћСЂСѓР¶РёРµ 1</text>
+		<text>Оружие 1</text>
 	</string>
 	<string id="kb_weapon2">
-		<text>РћСЂСѓР¶РёРµ 2</text>
+		<text>Оружие 2</text>
 	</string>
 	<string id="kb_weapon3">
-		<text>РћСЂСѓР¶РёРµ 3</text>
+		<text>Оружие 3</text>
 	</string>
 	<string id="kb_weapon4">
-		<text>РћСЂСѓР¶РёРµ 4</text>
+		<text>Оружие 4</text>
 	</string>
 	<string id="kb_weapon5">
-		<text>РћСЂСѓР¶РёРµ 5</text>
+		<text>Оружие 5</text>
 	</string>
 	<string id="kb_weapon6">
-		<text>РћСЂСѓР¶РёРµ 6</text>
+		<text>Оружие 6</text>
 	</string>
 	<string id="kb_wpn_next">
-		<text>РЎРјРµРЅРёС‚СЊ С‚РёРї РїР°С‚СЂРѕРЅРѕРІ</text>
+		<text>Сменить тип патронов</text>
 	</string>
 	<string id="kb_wpn_prev">
-		<text>РџСЂРµРґС‹РґСѓС‰РµРµ РѕСЂСѓР¶РёРµ СЌС‚РѕРіРѕ С‚РёРїР°</text>
+		<text>Предыдущее оружие этого типа</text>
 	</string>
 	<string id="kb_zoom">
-		<text>РџСЂРёР±Р»РёР·РёС‚СЊ</text>
+		<text>Приблизить</text>
 	</string>
 	<string id="speech_menu_group">
-		<text>Р“РѕР»РѕСЃРѕРІС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ (1)</text>
+		<text>Голосовые сообщения (1)</text>
 	</string>
 	<string id="speech_menu_personal">
-		<text>Р“РѕР»РѕСЃРѕРІС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ (2)</text>
+		<text>Голосовые сообщения (2)</text>
 	</string>
 	<string id="kb_detector">
-		<text>Р”РµС‚РµРєС‚РѕСЂ</text>
+		<text>Детектор</text>
 	</string>
 </string_table>
