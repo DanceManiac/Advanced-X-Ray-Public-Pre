@@ -1,0 +1,134 @@
+<w>
+	<background width="1024" height="768">
+
+	    <auto_static x="0" y="0" width="104" height="768" stretch="1">
+		    <texture>ui_inGame2_left_widepanel</texture>
+	    </auto_static>
+		<auto_static x="102" y="0" width="819" height="768" stretch="1">
+			<texture>ui_mfs_gswr_contrib_background</texture>
+	    </auto_static>
+	    <auto_static x="920" y="0" width="104" height="768" stretch="1">
+		    <texture>ui_inGame2_right_widepanel</texture>
+	    </auto_static>
+
+  </background>
+  
+  <main_dialog>
+
+        <dialog x="102" y="400" width="819" height="768" stretch="1">
+	        <!--texture>ui_mfs_gswr_contrib_background</texture-->
+		</dialog>
+		
+		<thanks_text x="200" y="400" width="50" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_thanks_text</text>
+        </thanks_text>
+		<developers_text x="400" y="400" width="50" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_developers_text</text>
+        </developers_text>
+		<donates_text x="600" y="400" width="50" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_donates_text</text>
+        </donates_text>
+	
+		<thanks_list x="96" y="40" width="150" height="286" always_show_scroll="0" can_select="1" right_ident="0" left_ident="0" top_indent="0" bottom_indent="0" vert_interval="0"/>
+		<developers_list x="296" y="40" width="150" height="286" always_show_scroll="0" can_select="1" right_ident="0" left_ident="0" top_indent="0" bottom_indent="0" vert_interval="0"/>
+		<donate_list x="496" y="40" width="150" height="286" always_show_scroll="0" can_select="1" right_ident="0" left_ident="0" top_indent="0" bottom_indent="0" vert_interval="0"/>
+		
+		<sawk_descr x="296" y="218" width="50" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_sawk_descr</text>
+        </sawk_descr>
+		<valerok_descr x="230" y="218" width="50" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_valerok_descr</text>
+        </valerok_descr>
+		<lvutner_descr x="296" y="218" width="50" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_lvutner_descr</text>
+        </lvutner_descr>
+		<xottab_duty_descr x="296" y="218" width="50" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_xottab_duty_descr</text>
+        </xottab_duty_descr>
+		<oldserpskistalker_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_oldserpskistalker_descr</text>
+        </oldserpskistalker_descr>
+		<openxray_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_narabotki_descr</text>
+        </openxray_descr>
+		<ogsr_engine_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_narabotki_descr</text>
+        </ogsr_engine_descr>
+		<dwm_team_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_dwm_team_descr</text>
+        </dwm_team_descr>
+		<abramcumner_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_narabotki2_descr</text>
+        </abramcumner_descr>
+		<atmosfear_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_narabotki_descr</text>
+        </atmosfear_descr>
+		<MayLay2k_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_MayLay2k_descr</text>
+        </MayLay2k_descr>
+		<CorryZeron_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_CorryZeron_descr</text>
+        </CorryZeron_descr>
+		<xrOxygen_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_narabotki_descr</text>
+        </xrOxygen_descr>
+		<LexAddon_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_narabotki_descr</text>
+        </LexAddon_descr>
+		<Scava_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_tester_descr</text>
+        </Scava_descr>
+		<fED_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_fed_descr</text>
+        </fED_descr>
+		
+		<DanceManiac_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_DanceManiac_descr</text>
+        </DanceManiac_descr>
+		<ggGhosTt_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_ggGhosTt_descr</text>
+        </ggGhosTt_descr>
+		<vadim_kulagin_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_vadim_kulagin_descr</text>
+        </vadim_kulagin_descr>
+		
+		<manuel_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_manuel_descr</text>
+        </manuel_descr>
+		<atom39_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_atom39_descr</text>
+        </atom39_descr>
+		<qteria_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_qteria_descr</text>
+        </qteria_descr>
+		<aruron_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_aruron_descr</text>
+        </aruron_descr>
+		<xabar_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_xabar_descr</text>
+        </xabar_descr>
+		<yaroslav_ustujanin_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_yaroslav_ustujanin_descr</text>
+        </yaroslav_ustujanin_descr>
+		<danya_stakanov_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_danya_stakanov_descr</text>
+        </danya_stakanov_descr>
+		<vadim_kulagin_donate_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_vadim_kulagin_donate_descr</text>
+        </vadim_kulagin_donate_descr>
+		<artyom_menshikov_donate_descr x="296" y="218" width="86" height="24" stretch="1">
+            <text align="l" font="graffiti19">ui_mfs_artyom_menshikov_donate_descr</text>
+        </artyom_menshikov_donate_descr>
+		
+		<btn_cancel x="680" y="250" width="86" height="24" stretch="1">
+            <text align="c" font="letterica16">ui_mm_cancel</text>
+            <texture>ui_inGame2_button</texture>
+			<text_color>
+				<e r="210" g="210" b="210"/>
+			</text_color>
+        </btn_cancel>
+  </main_dialog>
+	<!---test x="0" y="0" width="80" height="30">
+		<text align="l" font="graffiti19" r="135" g="123" b="116" complex_mode="0"/>
+	</test--->
+</w>

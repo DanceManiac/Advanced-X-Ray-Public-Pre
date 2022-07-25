@@ -15,4 +15,82 @@
 	<string id="hide_from_surge_name_2">
 		<text>Выброс: переждать в укрытии</text>
 	</string>
+
+	<!-- AtmosFear Fallout -->
+	<string id="hide_from_fallout_rad_message_caption">
+		<text>Внимание!</text>
+	</string>
+	<string id="hide_from_fallout_rad_message">
+		<text>Начинаются радиактивные осадки.</text>
+	</string>
+	<string id="hide_from_fallout_rad_descr_1_a">
+		<text>Опасный уровень радиации. Необходимо срочно бежать к ближайшему укрытию и спрятаться от радиоактивных осадков.</text>
+	</string>
+	<string id="hide_from_fallout_rad_descr_2_a">
+		<text>Во время радиоактивных осадков ни в коем случае нельзя покидать укрытие.</text>
+	</string>
+	<string id="hide_from_fallout_rad_name_1">
+		<text>Радиоактивные осадки: найти укрытие</text>
+	</string>
+	<string id="hide_from_fallout_rad_name_2">
+		<text>Радиоактивные осадки: переждать в укрытии</text>
+	</string>
+	<string id="end_fallout_rad_message_caption">
+		<text>Внимание!</text>
+	</string>
+	<string id="end_fallout_rad_message">
+		<text>Радиоактивные осадки закончились.</text>
+	</string>
+	
+	<string id="hide_from_fallout_acid_message_caption">
+		<text>Внимание!</text>
+	</string>
+	<string id="hide_from_fallout_acid_message">
+		<text>Начинаются химические осадки.</text>
+	</string>
+	<string id="hide_from_fallout_acid_descr_1_a">
+		<text>Опасный уровень загрязнения. Необходимо срочно бежать к ближайшему укрытию и спрятаться от химических осадков.</text>
+	</string>
+	<string id="hide_from_fallout_acid_descr_2_a">
+		<text>Во время химических осадков ни в коем случае нельзя покидать укрытие.</text>
+	</string>
+	<string id="hide_from_fallout_acid_name_1">
+		<text>Химические осадки: найти укрытие</text>
+	</string>
+	<string id="hide_from_fallout_acid_name_2">
+		<text>Химические осадки: переждать в укрытии</text>
+	</string>
+	<string id="end_fallout_acid_message_caption">
+		<text>Внимание!</text>
+	</string>
+	<string id="end_fallout_acid_message">
+		<text>Химические осадки закончились.</text>
+	</string>
+
+	<!-- AtmosFear Psi Storm -->
+	<string id="hide_from_psi_storm_message_caption">
+		<text>Внимание!</text>
+	</string>
+	<string id="hide_from_psi_storm_message">
+		<text>Начинается пси-шторм.</text>
+	</string>
+	<string id="hide_from_psi_storm_descr_1_a">
+		<text>Необходимо срочно бежать к ближайшему укрытию и спрятаться от пси-шторма.</text>
+	</string>
+	<string id="hide_from_psi_storm_descr_2_a">
+		<text>Во время пси-шторма ни в коем случае нельзя покидать укрытие.</text>
+	</string>
+	<string id="hide_from_psi_storm_name_1">
+		<text>Пси-шторм: найти укрытие</text>
+	</string>
+	<string id="hide_from_psi_storm_name_2">
+		<text>Пси-шторм: переждать в укрытии</text>
+	</string>
+	<string id="end_psi_storm_caption">
+		<text>Внимание!</text>
+	</string>
+	<string id="end_psi_storm_message">
+		<text>Пси-шторм закончился.</text>
+	</string>
+
 </string_table>

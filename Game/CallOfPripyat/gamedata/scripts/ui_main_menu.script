@@ -30,9 +30,18 @@ function main_menu:InitControls()
 	self.message_box				= CUIMessageBoxEx()
 	self:Register					(self.message_box, "msg_box")
 
-	local _ver = xml:InitStatic		("static_version",self)
+--/--==game_and_mod_ver==--
+	local _gVer = xml:InitStatic		("static_version",self)
+	local _mfsVer = xml:InitStatic		("mod_version",self)
+	local _mfs_team	= xml:InitStatic("mfs_team_info",self)
 	local mm						= _G.main_menu.get_main_menu()
-	_ver:TextControl():SetText		("Advanced X-Ray ver. " .. mm:GetGSVer())
+	_gVer:TextControl():SetText		("Advanced X-Ray ver. " .. mm:GetGSVer())
+
+	local ConfVer = ReadString("mfs_ver","version",ini_file("menu_configs.ltx"))
+	local Year = ReadString("Year","year",ini_file("menu_configs.ltx"))
+	_mfsVer:TextControl():SetText("Global Stalker Weather Rework ver: "..ConfVer.." ")
+	_mfs_team:TextControl():SetText("M.F.S. Team "..Year.."©. ")
+--/--==game_and_mod_ver==--
 
     self.l_mgr = mm:GetLoginMngr()
     self.acc_mgr = mm:GetAccountMngr()
@@ -78,6 +87,7 @@ function main_menu:InitCallBacks()
 	self:AddCallback("btn_ret",			ui_events.BUTTON_CLICKED,				self.OnButton_return_game,			self)
 	self:AddCallback("btn_lastsave",	ui_events.BUTTON_CLICKED,				self.OnButton_last_save,			self)
 	self:AddCallback("btn_credits",		ui_events.BUTTON_CLICKED,				self.OnButton_credits_clicked,		self)
+	self:AddCallback("btn_contribList", 	ui_events.BUTTON_CLICKED,				self.OnButton_contribList_clicked,	self)
 	-- message box
 	self:AddCallback("msg_box",     ui_events.MESSAGE_BOX_OK_CLICKED,		self.OnMsgOk,						self)
 	self:AddCallback("msg_box",     ui_events.MESSAGE_BOX_CANCEL_CLICKED,	self.OnMsgCancel,					self)
@@ -237,6 +247,17 @@ function main_menu:OnButton_options_clicked()
 
 	self.opt_dlg:SetCurrentValues()
 	self.opt_dlg:ShowDialog(true)
+	self:HideDialog()
+	self:Show(false)
+end
+
+function main_menu:OnButton_contribList_clicked()
+	if self.contribList_dlg == nil then
+		self.contribList_dlg = contrib_list.contribList()
+		self.contribList_dlg.owner = self
+	end
+
+	self.contribList_dlg:ShowDialog(true)
 	self:HideDialog()
 	self:Show(false)
 end

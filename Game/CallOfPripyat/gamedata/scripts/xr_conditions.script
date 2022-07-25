@@ -1034,6 +1034,9 @@ function is_squad_commander(actor, npc)
 		npc_id = npc:id()
 	end
 	local squad = get_object_squad(npc)
+	-- spawner
+	if squad==nil then return true end
+	-- end spawner
 	return squad ~= nil and squad:commander_id() == npc_id
 end
 
@@ -1056,7 +1059,8 @@ function surge_complete()
 end
 
 function surge_started()
-	return surge_manager.is_started()
+	--return surge_manager.is_started()
+	return surge_manager.is_started() or psi_storm_manager.is_started() or fallout_manager.is_started()
 end
 
 function surge_kill_all()
@@ -1728,4 +1732,14 @@ function upgrade_hint_kardan(actor, npc, p)
 	inventory_upgrades.cur_hint = hint_table
 
 	return can_upgrade >= 2
+end
+
+-- AtmosFear Fallout
+function fallout_complete()
+	return fallout_manager.is_finished()
+end
+
+-- AtmosFear Psi Storm
+function psi_storm_complete()
+	return psi_storm_manager.is_finished()
 end

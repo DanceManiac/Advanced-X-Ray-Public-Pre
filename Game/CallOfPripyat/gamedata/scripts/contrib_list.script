@@ -1,0 +1,813 @@
+--[[ -----------------------------------------------------------------------------------------------
+ File		 : contrib_list.script
+ Description : contributors list on action for GSWR
+ Copyright	 : 2021 © M.F.S. Team
+ Author		 : Dance Maniac & ggGhosTt
+--]] -----------------------------------------------------------------------------------------------
+--/											  Variables
+--]] -----------------------------------------------------------------------------------------------
+local aspectRatio = 1
+class "contribList" (CUIScriptWnd)
+
+--Список благодарностей
+local sawk = "ui_mfs_sawk"
+local valerok = "ui_mfs_valerok"
+local lvutner = "ui_mfs_lvutner"
+local xottab_duty = "ui_mfs_xottab_duty"
+local forserx = "ui_mfs_forserx"
+local oldserpskistalker = "ui_mfs_oldserpskistalker"
+local openxray = "ui_mfs_openxray"
+local ogsr_engine = "ui_mfs_ogsr_engine"
+local DWM_Team = "ui_mfs_dwm_team"
+local abramcumner = "ui_mfs_abramcumner"
+local atmosfear = "ui_mfs_atmosfear"
+local MayLay2k = "ui_mfs_MayLay2k"
+local CorryZeron = "ui_mfs_CorryZeron"
+local xrOxygen = "ui_mfs_xrOxygen"
+local LexAddon = "ui_mfs_LexAddon"
+local Scava = "ui_mfs_Scava"
+local fED = "ui_mfs_fED"
+
+--Список разработчиков
+local DanceManiac = "ui_mfs_Dance_Maniac"
+local ggGhosTt = "ui_mfs_ggGhosTt"
+local vadim_kulagin = "ui_mfs_rezkiy"
+
+--Список пожертвовавших
+local manuel = "ui_mfs_manuel"
+local atom39 = "ui_mfs_atom39"
+local qteria = "ui_mfs_qteria"
+local aruron = "ui_mfs_aruron"
+local xabar = "ui_mfs_xabar"
+local yaroslav_ustujanin = "ui_mfs_yaroslav_ustujanin"
+local danya_stakanov = "ui_mfs_danya_stakanov"
+local artyom_menshikov = "ui_mfs_artyom_menshikov"
+
+--]] -----------------------------------------------------------------------------------------------
+--/											  Functions
+--]] -----------------------------------------------------------------------------------------------
+function contribList:__init() super()
+	if(device().width/device().height>(1024/768+0.01)) then
+		aspectRatio = 0.8
+	end
+	self.param_ini = ini_file("gswr_contributors.ltx")
+
+	self.m_preconditions	= {}
+    self:InitControls()
+    self:InitCallBacks()
+end
+
+function contribList:__finalize()
+end
+
+function contribList:InitControls()
+	self:SetWndRect				(Frect():set(0,0,1024,768))
+	self:Enable					(true)
+	
+	local xml					= CScriptXmlInit()
+	xml:ParseFile				("ui_mm_gswr_contributors.xml")
+	
+	xml:InitStatic				("background", self)
+	self.dialog					= xml:InitStatic("main_dialog:dialog", self)
+	
+	xml:InitStatic				("main_dialog:thanks_text", self)
+	xml:InitStatic				("main_dialog:developers_text", self)
+	xml:InitStatic				("main_dialog:donates_text", self)
+	
+--Информация
+--Описание благодарностей
+	self.sawk_descr = xml:InitStatic("main_dialog:sawk_descr", self)
+	self.sawk_descr:Show(false)
+	self.valerok_descr = xml:InitStatic("main_dialog:valerok_descr", self)
+	self.valerok_descr:Show(false)
+	self.lvutner_descr = xml:InitStatic("main_dialog:lvutner_descr", self)
+	self.lvutner_descr:Show(false)
+	self.xottab_duty_descr = xml:InitStatic("main_dialog:xottab_duty_descr", self)
+	self.xottab_duty_descr:Show(false)
+	self.oldserpskistalker_descr = xml:InitStatic("main_dialog:oldserpskistalker_descr", self)
+	self.oldserpskistalker_descr:Show(false)
+	self.openxray_descr = xml:InitStatic("main_dialog:openxray_descr", self)
+	self.openxray_descr:Show(false)
+	self.ogsr_engine_descr = xml:InitStatic("main_dialog:ogsr_engine_descr", self)
+	self.ogsr_engine_descr:Show(false)
+	self.dwm_team_descr = xml:InitStatic("main_dialog:dwm_team_descr", self)
+	self.dwm_team_descr:Show(false)
+	self.abramcumner_descr = xml:InitStatic("main_dialog:abramcumner_descr", self)
+	self.abramcumner_descr:Show(false)
+	self.atmosfear_descr = xml:InitStatic("main_dialog:atmosfear_descr", self)
+	self.atmosfear_descr:Show(false)
+	self.MayLay2k_descr = xml:InitStatic("main_dialog:MayLay2k_descr", self)
+	self.MayLay2k_descr:Show(false)
+	self.CorryZeron_descr = xml:InitStatic("main_dialog:CorryZeron_descr", self)
+	self.CorryZeron_descr:Show(false)
+	self.xrOxygen_descr = xml:InitStatic("main_dialog:xrOxygen_descr", self)
+	self.xrOxygen_descr:Show(false)
+	self.LexAddon_descr = xml:InitStatic("main_dialog:LexAddon_descr", self)
+	self.LexAddon_descr:Show(false)
+	self.Scava_descr = xml:InitStatic("main_dialog:Scava_descr", self)
+	self.Scava_descr:Show(false)
+	self.fED_descr = xml:InitStatic("main_dialog:fED_descr", self)
+	self.fED_descr:Show(false)
+	
+--Описание разработчиков
+	self.DanceManiac_descr = xml:InitStatic("main_dialog:DanceManiac_descr", self)
+	self.DanceManiac_descr:Show(false)
+	self.ggGhosTt_descr = xml:InitStatic("main_dialog:ggGhosTt_descr", self)
+	self.ggGhosTt_descr:Show(false)
+	self.vadim_kulagin_descr = xml:InitStatic("main_dialog:vadim_kulagin_descr", self)
+	self.vadim_kulagin_descr:Show(false)
+	
+--Описание пожертвовавших
+	self.manuel_descr = xml:InitStatic("main_dialog:manuel_descr", self)
+	self.manuel_descr:Show(false)
+	self.atom39_descr = xml:InitStatic("main_dialog:atom39_descr", self)
+	self.atom39_descr:Show(false)
+	self.qteria_descr = xml:InitStatic("main_dialog:qteria_descr", self)
+	self.qteria_descr:Show(false)
+	self.aruron_descr = xml:InitStatic("main_dialog:aruron_descr", self)
+	self.aruron_descr:Show(false)
+	self.xabar_descr = xml:InitStatic("main_dialog:xabar_descr", self)
+	self.xabar_descr:Show(false)
+	self.yaroslav_ustujanin_descr = xml:InitStatic("main_dialog:yaroslav_ustujanin_descr", self)
+	self.yaroslav_ustujanin_descr:Show(false)
+	self.danya_stakanov_descr = xml:InitStatic("main_dialog:danya_stakanov_descr", self)
+	self.danya_stakanov_descr:Show(false)
+	self.vadim_kulagin_donate_descr = xml:InitStatic("main_dialog:vadim_kulagin_donate_descr", self)
+	self.vadim_kulagin_donate_descr:Show(false)
+	self.artyom_menshikov_donate_descr = xml:InitStatic("main_dialog:artyom_menshikov_donate_descr", self)
+	self.artyom_menshikov_donate_descr:Show(false)
+	
+--Список благодарностей
+	self.thanks_list	= xml:InitListBox("main_dialog:thanks_list", self.dialog)
+	self:Register(self.thanks_list, "listbox_thanks")
+	self.thanks_list:AddTextItem(sawk)
+	self.thanks_list:AddTextItem(valerok)
+	self.thanks_list:AddTextItem(lvutner)
+	self.thanks_list:AddTextItem(xottab_duty)
+	self.thanks_list:AddTextItem(oldserpskistalker)
+	self.thanks_list:AddTextItem(openxray)
+	self.thanks_list:AddTextItem(ogsr_engine)
+	self.thanks_list:AddTextItem(DWM_Team)
+	self.thanks_list:AddTextItem(abramcumner)
+	self.thanks_list:AddTextItem(atmosfear)
+	self.thanks_list:AddTextItem(MayLay2k)
+	self.thanks_list:AddTextItem(CorryZeron)
+	self.thanks_list:AddTextItem(xrOxygen)
+	self.thanks_list:AddTextItem(LexAddon)
+	self.thanks_list:AddTextItem(Scava)
+	self.thanks_list:AddTextItem(fED)
+	
+--Список разработчиков
+	self.developers_list	= xml:InitListBox("main_dialog:developers_list", self.dialog)
+	self:Register(self.developers_list, "listbox_developers")
+	self.developers_list:AddTextItem(DanceManiac)
+	self.developers_list:AddTextItem(ggGhosTt)
+	self.developers_list:AddTextItem(vadim_kulagin)
+	
+--Список пожертвовавших
+	self.donate_list	= xml:InitListBox("main_dialog:donate_list", self.dialog)
+	self:Register(self.donate_list, "listbox_donates")
+	self.donate_list:AddTextItem(manuel)
+	self.donate_list:AddTextItem(atom39)
+	self.donate_list:AddTextItem(qteria)
+	self.donate_list:AddTextItem(aruron)
+	self.donate_list:AddTextItem(xabar)
+	self.donate_list:AddTextItem(yaroslav_ustujanin)
+	self.donate_list:AddTextItem(danya_stakanov)
+	self.donate_list:AddTextItem(vadim_kulagin)
+	self.donate_list:AddTextItem(artyom_menshikov)
+	
+--Кнопка выхода из окна
+	self.btn_cancel = xml:Init3tButton("main_dialog:btn_cancel", self.dialog)
+    self:Register (self.btn_cancel, "btn_cancel")
+	
+	self.b_restart_system_shown	= false
+end
+
+function contribList:InitCallBacks()
+	self:AddCallback("btn_cancel",		ui_events.BUTTON_CLICKED,				self.OnButton_cancel,				self)
+    self:AddCallback("listbox_thanks", 	ui_events.LIST_ITEM_CLICKED, 			self.thanks_element_clicked, 		self)
+    self:AddCallback("listbox_developers", 	ui_events.LIST_ITEM_CLICKED, 		self.developers_element_clicked, 	self)
+    self:AddCallback("listbox_donates", ui_events.LIST_ITEM_CLICKED, 			self.donate_element_clicked, 		self)	
+end
+
+function contribList:thanks_element_clicked() 
+	if self.thanks_list:GetSize()==0 then return end
+	    self.item = self.thanks_list:GetSelectedItem()
+		self.text_item = self.item:GetTextItem()        
+			if self.text_item:GetText() == "sawk" then
+					self.sawk_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.sawk_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "ValeroK" then
+					self.valerok_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.valerok_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "LVutner" then
+					self.lvutner_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.lvutner_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Xottab_DUTY" then
+					self.xottab_duty_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.xottab_duty_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "OldSerpskiStalker" then
+					self.oldserpskistalker_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.oldserpskistalker_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "OpenXRay" then
+					self.openxray_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.openxray_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "DWM Team" then
+					self.dwm_team_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.dwm_team_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "OGSR Engine" then
+					self.ogsr_engine_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.ogsr_engine_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Abramcumner" then
+					self.abramcumner_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.abramcumner_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Atmosfear 3" then
+					self.atmosfear_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.atmosfear_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "MayLay2k" then
+					self.MayLay2k_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.MayLay2k_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "CorryZeron" then
+					self.CorryZeron_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.CorryZeron_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "xrOxygen" then
+					self.xrOxygen_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.xrOxygen_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Lex Addon" then
+					self.LexAddon_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.LexAddon_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Scava" then
+					self.Scava_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.Scava_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Жора Цементов (fED)" then
+					self.fED_descr:Show(true)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+			else
+					self.fED_descr:Show(false)
+			end
+end
+
+function contribList:developers_element_clicked() 
+	if self.developers_list:GetSize()==0 then return end
+	    self.item = self.developers_list:GetSelectedItem()
+		self.text_item = self.item:GetTextItem()        
+			if self.text_item:GetText() == "Dance Maniac" then
+					self.DanceManiac_descr:Show(true)
+					self.sawk_descr:Show(false)
+					self.valerok_descr:Show(false)
+					self.lvutner_descr:Show(false)
+					self.xottab_duty_descr:Show(false)
+					self.oldserpskistalker_descr:Show(false)
+					self.openxray_descr:Show(false)
+					self.ogsr_engine_descr:Show(false)
+					self.dwm_team_descr:Show(false)
+					self.abramcumner_descr:Show(false)
+					self.atmosfear_descr:Show(false)
+					self.MayLay2k_descr:Show(false)
+					self.CorryZeron_descr:Show(false)
+					self.xrOxygen_descr:Show(false)
+					self.LexAddon_descr:Show(false)
+					self.Scava_descr:Show(false)
+					self.fED_descr:Show(false)					
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+					self.artyom_menshikov_donate_descr:Show(false)
+			else
+					self.DanceManiac_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "ggGhosTt" then
+					self.ggGhosTt_descr:Show(true)
+					self.sawk_descr:Show(false)
+					self.valerok_descr:Show(false)
+					self.lvutner_descr:Show(false)
+					self.xottab_duty_descr:Show(false)
+					self.oldserpskistalker_descr:Show(false)
+					self.openxray_descr:Show(false)
+					self.ogsr_engine_descr:Show(false)
+					self.dwm_team_descr:Show(false)
+					self.abramcumner_descr:Show(false)
+					self.atmosfear_descr:Show(false)
+					self.MayLay2k_descr:Show(false)
+					self.CorryZeron_descr:Show(false)
+					self.xrOxygen_descr:Show(false)
+					self.LexAddon_descr:Show(false)
+					self.Scava_descr:Show(false)
+					self.fED_descr:Show(false)					
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+					self.artyom_menshikov_donate_descr:Show(false)
+			else
+					self.ggGhosTt_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Вадим «Резкий» Кулагин" then
+					self.vadim_kulagin_descr:Show(true)
+					self.sawk_descr:Show(false)
+					self.valerok_descr:Show(false)
+					self.lvutner_descr:Show(false)
+					self.xottab_duty_descr:Show(false)
+					self.oldserpskistalker_descr:Show(false)
+					self.openxray_descr:Show(false)
+					self.ogsr_engine_descr:Show(false)
+					self.dwm_team_descr:Show(false)
+					self.abramcumner_descr:Show(false)
+					self.atmosfear_descr:Show(false)
+					self.MayLay2k_descr:Show(false)
+					self.CorryZeron_descr:Show(false)
+					self.xrOxygen_descr:Show(false)
+					self.LexAddon_descr:Show(false)
+					self.Scava_descr:Show(false)
+					self.fED_descr:Show(false)					
+					self.manuel_descr:Show(false)
+					self.atom39_descr:Show(false)
+					self.qteria_descr:Show(false)
+					self.aruron_descr:Show(false)
+					self.xabar_descr:Show(false)
+					self.yaroslav_ustujanin_descr:Show(false)
+					self.danya_stakanov_descr:Show(false)
+					self.vadim_kulagin_donate_descr:Show(false)
+					self.artyom_menshikov_donate_descr:Show(false)
+			else
+					self.vadim_kulagin_descr:Show(false)
+			end
+end
+
+function contribList:donate_element_clicked() 
+	if self.donate_list:GetSize()==0 then return end
+	    self.item = self.donate_list:GetSelectedItem()
+		self.text_item = self.item:GetTextItem()        
+			if self.text_item:GetText() == "Мануэль" then
+					self.manuel_descr:Show(true)
+					self.sawk_descr:Show(false)
+					self.valerok_descr:Show(false)
+					self.lvutner_descr:Show(false)
+					self.xottab_duty_descr:Show(false)
+					self.oldserpskistalker_descr:Show(false)
+					self.openxray_descr:Show(false)
+					self.ogsr_engine_descr:Show(false)
+					self.dwm_team_descr:Show(false)
+					self.abramcumner_descr:Show(false)
+					self.atmosfear_descr:Show(false)
+					self.MayLay2k_descr:Show(false)
+					self.CorryZeron_descr:Show(false)
+					self.xrOxygen_descr:Show(false)
+					self.LexAddon_descr:Show(false)
+					self.Scava_descr:Show(false)
+					self.fED_descr:Show(false)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.artyom_menshikov_donate_descr:Show(false)
+			else
+					self.manuel_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Атом39" then
+					self.atom39_descr:Show(true)
+					self.sawk_descr:Show(false)
+					self.valerok_descr:Show(false)
+					self.lvutner_descr:Show(false)
+					self.xottab_duty_descr:Show(false)
+					self.oldserpskistalker_descr:Show(false)
+					self.openxray_descr:Show(false)
+					self.ogsr_engine_descr:Show(false)
+					self.dwm_team_descr:Show(false)
+					self.abramcumner_descr:Show(false)
+					self.atmosfear_descr:Show(false)
+					self.MayLay2k_descr:Show(false)
+					self.CorryZeron_descr:Show(false)
+					self.xrOxygen_descr:Show(false)
+					self.LexAddon_descr:Show(false)
+					self.Scava_descr:Show(false)
+					self.fED_descr:Show(false)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.artyom_menshikov_donate_descr:Show(false)
+			else
+					self.atom39_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Qteria" then
+					self.qteria_descr:Show(true)
+					self.sawk_descr:Show(false)
+					self.valerok_descr:Show(false)
+					self.lvutner_descr:Show(false)
+					self.xottab_duty_descr:Show(false)
+					self.oldserpskistalker_descr:Show(false)
+					self.openxray_descr:Show(false)
+					self.ogsr_engine_descr:Show(false)
+					self.dwm_team_descr:Show(false)
+					self.abramcumner_descr:Show(false)
+					self.atmosfear_descr:Show(false)
+					self.MayLay2k_descr:Show(false)
+					self.CorryZeron_descr:Show(false)
+					self.xrOxygen_descr:Show(false)
+					self.LexAddon_descr:Show(false)
+					self.Scava_descr:Show(false)
+					self.fED_descr:Show(false)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.artyom_menshikov_donate_descr:Show(false)
+			else
+					self.qteria_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Артём Иремадзе (Aruron)" then
+					self.aruron_descr:Show(true)
+					self.sawk_descr:Show(false)
+					self.valerok_descr:Show(false)
+					self.lvutner_descr:Show(false)
+					self.xottab_duty_descr:Show(false)
+					self.oldserpskistalker_descr:Show(false)
+					self.openxray_descr:Show(false)
+					self.ogsr_engine_descr:Show(false)
+					self.dwm_team_descr:Show(false)
+					self.abramcumner_descr:Show(false)
+					self.atmosfear_descr:Show(false)
+					self.MayLay2k_descr:Show(false)
+					self.CorryZeron_descr:Show(false)
+					self.xrOxygen_descr:Show(false)
+					self.LexAddon_descr:Show(false)
+					self.Scava_descr:Show(false)
+					self.fED_descr:Show(false)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.artyom_menshikov_donate_descr:Show(false)
+			else
+					self.aruron_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Xabar" then
+					self.xabar_descr:Show(true)
+					self.sawk_descr:Show(false)
+					self.valerok_descr:Show(false)
+					self.lvutner_descr:Show(false)
+					self.xottab_duty_descr:Show(false)
+					self.oldserpskistalker_descr:Show(false)
+					self.openxray_descr:Show(false)
+					self.ogsr_engine_descr:Show(false)
+					self.dwm_team_descr:Show(false)
+					self.abramcumner_descr:Show(false)
+					self.atmosfear_descr:Show(false)
+					self.MayLay2k_descr:Show(false)
+					self.CorryZeron_descr:Show(false)
+					self.xrOxygen_descr:Show(false)
+					self.LexAddon_descr:Show(false)
+					self.Scava_descr:Show(false)
+					self.fED_descr:Show(false)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.artyom_menshikov_donate_descr:Show(false)
+			else
+					self.xabar_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Ярослав Устюжанин" then
+					self.yaroslav_ustujanin_descr:Show(true)
+					self.sawk_descr:Show(false)
+					self.valerok_descr:Show(false)
+					self.lvutner_descr:Show(false)
+					self.xottab_duty_descr:Show(false)
+					self.oldserpskistalker_descr:Show(false)
+					self.openxray_descr:Show(false)
+					self.ogsr_engine_descr:Show(false)
+					self.dwm_team_descr:Show(false)
+					self.abramcumner_descr:Show(false)
+					self.atmosfear_descr:Show(false)
+					self.MayLay2k_descr:Show(false)
+					self.CorryZeron_descr:Show(false)
+					self.xrOxygen_descr:Show(false)
+					self.LexAddon_descr:Show(false)
+					self.Scava_descr:Show(false)
+					self.fED_descr:Show(false)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.artyom_menshikov_donate_descr:Show(false)
+			else
+					self.yaroslav_ustujanin_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Блатной Даня Стаканов" then
+					self.danya_stakanov_descr:Show(true)
+					self.sawk_descr:Show(false)
+					self.valerok_descr:Show(false)
+					self.lvutner_descr:Show(false)
+					self.xottab_duty_descr:Show(false)
+					self.oldserpskistalker_descr:Show(false)
+					self.openxray_descr:Show(false)
+					self.ogsr_engine_descr:Show(false)
+					self.dwm_team_descr:Show(false)
+					self.abramcumner_descr:Show(false)
+					self.atmosfear_descr:Show(false)
+					self.MayLay2k_descr:Show(false)
+					self.CorryZeron_descr:Show(false)
+					self.xrOxygen_descr:Show(false)
+					self.LexAddon_descr:Show(false)
+					self.Scava_descr:Show(false)
+					self.fED_descr:Show(false)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.artyom_menshikov_donate_descr:Show(false)
+			else
+					self.danya_stakanov_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Вадим «Резкий» Кулагин" then
+					self.vadim_kulagin_donate_descr:Show(true)
+					self.sawk_descr:Show(false)
+					self.valerok_descr:Show(false)
+					self.lvutner_descr:Show(false)
+					self.xottab_duty_descr:Show(false)
+					self.oldserpskistalker_descr:Show(false)
+					self.openxray_descr:Show(false)
+					self.ogsr_engine_descr:Show(false)
+					self.dwm_team_descr:Show(false)
+					self.abramcumner_descr:Show(false)
+					self.atmosfear_descr:Show(false)
+					self.MayLay2k_descr:Show(false)
+					self.CorryZeron_descr:Show(false)
+					self.xrOxygen_descr:Show(false)
+					self.LexAddon_descr:Show(false)
+					self.Scava_descr:Show(false)
+					self.fED_descr:Show(false)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.artyom_menshikov_donate_descr:Show(false)
+			else
+					self.vadim_kulagin_donate_descr:Show(false)
+			end
+			
+			if self.text_item:GetText() == "Артём Меньшиков" then
+					self.vadim_kulagin_donate_descr:Show(false)
+					self.sawk_descr:Show(false)
+					self.valerok_descr:Show(false)
+					self.lvutner_descr:Show(false)
+					self.xottab_duty_descr:Show(false)
+					self.oldserpskistalker_descr:Show(false)
+					self.openxray_descr:Show(false)
+					self.ogsr_engine_descr:Show(false)
+					self.dwm_team_descr:Show(false)
+					self.abramcumner_descr:Show(false)
+					self.atmosfear_descr:Show(false)
+					self.MayLay2k_descr:Show(false)
+					self.CorryZeron_descr:Show(false)
+					self.xrOxygen_descr:Show(false)
+					self.LexAddon_descr:Show(false)
+					self.Scava_descr:Show(false)
+					self.fED_descr:Show(false)
+					self.DanceManiac_descr:Show(false)
+					self.ggGhosTt_descr:Show(false)
+					self.vadim_kulagin_descr:Show(false)
+					self.artyom_menshikov_donate_descr:Show(true)
+			else
+					self.artyom_menshikov_donate_descr:Show(false)
+			end
+end
+		
+
+function contribList:OnButton_cancel()
+	self.owner:ShowDialog(true)
+	self:HideDialog()
+	self.owner:Show(true)
+end

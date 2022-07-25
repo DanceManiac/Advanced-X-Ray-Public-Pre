@@ -1,0 +1,522 @@
+--[[ -----------------------------------------------------------------------------------------------
+ File		 : swe_debug.script
+ Description : stalker weather engine debug script
+ Copyright	 : 2021 © Stalker Weather Engine
+ Authors	 : = MayLay2k =, ggGhosTt
+--]] -----------------------------------------------------------------------------------------------
+--/											  Options:
+--/			TAB - Прячет \ Показывает подсказки и Включает \ Выключает Дебаг меню
+--/			B - Вызов и отстановка Выброса
+--/			V - Полет камеры
+--/			C - Запрос погодного цикла
+--/			Z - бессмертие
+--/			lAlt - прячем худ
+--]] -----------------------------------------------------------------------------------------------
+--]] -----------------------------------------------------------------------------------------------
+--/									Локалы подключения расширений.
+--]] -----------------------------------------------------------------------------------------------
+	lua_extensions			= 0				-- Если стоит библиотека расширения скриптового API (не готово).
+--]] -----------------------------------------------------------------------------------------------
+--/											Доп опции.
+--/	log_mode = Вывод информации в консоль и лог.
+--/	 0 - Стандартный метод работы лога.
+--/	 1 - Выводить больше информации в лог.
+--/  2 - Максимально чистый лог.
+--/	abort_mode = Режим работы функции abort(), не рабочей в чистой игре.
+--/	 0 - Игнорирование abort().
+--/	 1 - Позволяет видеть больше ошибок в логе - нужен правленный xrGame!
+--/ aggressive_abort = заставляет игру вылетатать с логом, при срабатывании abort().
+--/  0 - Не вылетает.
+--/  1 - Вылетает.
+--]] -----------------------------------------------------------------------------------------------
+	log_mode				= 1				-- 0 / 1 \ 2		- Описание выше.
+	abort_mode				= 1				-- 0 / 1			- Описание выше.
+	aggressive_abort		= 0				-- 0 / 1			- Описание выше.
+	keylogger_method		= 1				-- 0 / 1 \ 2		- Описание ниже.
+--]] -----------------------------------------------------------------------------------------------
+--/	keylogger_method = Выбор режима отлова нажатия на клавишу, для работы функций из заголовка.
+--/	 0 - Отключено.
+--/	 1 - Используется скриптовый кейлоггер.
+--/	 2 - Используется движковый кейлоггер (если в вашем движке есть событие on key press).
+--]] -----------------------------------------------------------------------------------------------
+
+-- Файлы для чтения стрингов и прочие служебные локалы.
+local swe_debug_menu	= "0"
+local actor_is_a_dog	= "0"
+local debug_weather		= "0"
+local hide_hud			= "0"
+local surge_on_off		= "0"
+local psi_storm_on_off  = "0"
+local fallout_on_off    = "0"
+local peremotka			= "0"
+local ch_time_factor	= "0"
+local show_c_text 		= "0"
+local hmh				= 1
+local i 				= 0
+local t_factor			= 0
+local tf_table 			= { [1] = 1, [2] = 6, [3] = 10, [4] = 20, [5] = 50, [6] = 100, [7] = 200, [8] = 396, [9] = 1000, [10] = 2000, [11] = 5000 }
+local ini = ini_file("game.ltx")
+local ini2 = ini_file("environment\\dynamic_weather_graphs.ltx")
+
+--]] -----------------------------------------------------------------------------------------------
+--/									Дальше пошли функции скрипта.
+--]] -----------------------------------------------------------------------------------------------
+--Это вызывается из актор апдейта.
+function update()
+
+	if keylogger_method == 1 then swe_debug.script_keylogger() end
+	
+	local level_string				= level.name()
+	local level_weather_string		= utils.cfg_get_string(ini, level.name(), "weathers", db.actor, false, "", "")
+	local weather_cycle_string		= level.get_weather()
+	local time_factor_string		= level.get_time_factor()
+
+	if actor_is_a_dog == "1" then
+		get_hud():AddCustomStatic("godmode_message", true) 
+		get_hud():GetCustomStatic("godmode_message"):wnd():TextControl():SetText("GodMode Activated")
+		db.actor.health = 1.0
+		db.actor.psy_health = 1.0
+		db.actor.power = 1.0
+		db.actor.radiation = -1.0
+		db.actor.bleeding = 1.0
+	else
+		get_hud():RemoveCustomStatic("godmode_message")
+	end
+
+	if swe_debug_menu == "1" then
+	local menudbg_info =	string.format("kC to Debug Weather \\n") ..
+							string.format("kM to Rewind Time \\n") ..
+							string.format("kH to Change Time Factor \\n") ..
+							string.format("kB to Surge \\n") ..
+							string.format("kN to Psi Storm \\n") ..
+							string.format("kF to Fallout \\n") ..
+							string.format("kV to Actor Fly \\n") ..
+							string.format("kZ to GodMode \\n") ..
+							string.format("kLeftAlt to Hide Hud", tostring(""))
+
+		get_hud():AddCustomStatic("faq_notes", true)
+		get_hud():GetCustomStatic("faq_notes"):wnd():TextControl():SetText(menudbg_info)
+	else
+		get_hud():RemoveCustomStatic("faq_notes")
+	end
+
+	if debug_weather == "1" then
+	    local weather_info = ""
+	    if level_weather_string == "outdoor" then 
+	    weather_info =  string.format("Level Name: %s\\n", level_string) ..
+						string.format("Weather Name: %s\\n", level_weather_string) ..
+						string.format("Section Name: %s\\n", level_weathers.wthr_sect_dbg) ..
+						string.format("Cycle Name: %s\\n", weather_cycle_string) ..
+						string.format("Period Change Hour: last: %s,%s%s\\n", level_weathers.ltpd_cehr_dbg, " next: ", level_weathers.ntpd_cehr_dbg) ..
+						string.format("Forced Surge State: %s\\n", surge_manager.forced_surge_state) ..
+						string.format("Forced Psi Storm State: %s\\n", psi_storm_manager.forced_psi_storm_state) ..
+						string.format("Forced Fallout State: %s\\n", fallout_manager.forced_fallout_state) ..
+						string.format("Time Factor: %i\\n", math.floor(time_factor_string))
+		else weather_info = string.format("Level Name: %s\\n", level_string) ..
+		                    string.format("Weather Name: %s\\n", level_weather_string) ..
+		                    string.format("Forced Surge State: %s\\n", surge_manager.forced_surge_state) ..
+							string.format("Forced Psi Storm State: %s\\n", psi_storm_manager.forced_psi_storm_state) ..
+							string.format("Forced Fallout State: %s\\n", fallout_manager.forced_fallout_state) ..
+							string.format("Time Factor: %i\\n", math.floor(time_factor_string))
+		end 
+		get_hud():AddCustomStatic("weather_info", true) 
+		get_hud():GetCustomStatic("weather_info"):wnd():TextControl():SetText(weather_info)
+	else
+		get_hud():RemoveCustomStatic("weather_info")
+	end
+
+	if show_c_text == "1" then
+		local textec = 		string.format("How many hours to rewind: \\n") ..
+							string.format(" key J to - and key K to + %s", tostring("key Enter to apply."))
+		get_hud():AddCustomStatic("textec", true) 
+		get_hud():GetCustomStatic("textec"):wnd():TextControl():SetText(textec)
+		get_hud():AddCustomStatic("textec_hmh", true) 
+		get_hud():GetCustomStatic("textec_hmh"):wnd():TextControl():SetText(hmh)
+	elseif show_c_text == "2" then
+		local textec = 		string.format("which time factor do you want: \\n") ..
+							string.format(" key J to - and key K to + %s", tostring("key Enter to apply."))
+		get_hud():AddCustomStatic("textec", true) 
+		get_hud():GetCustomStatic("textec"):wnd():TextControl():SetText(textec)
+		get_hud():AddCustomStatic("textec_hmh", true) 
+		get_hud():GetCustomStatic("textec_hmh"):wnd():TextControl():SetText(t_factor)
+	else
+		get_hud():RemoveCustomStatic("textec")
+		get_hud():RemoveCustomStatic("textec_hmh")
+	end
+end
+
+function on_key_press(key)
+	--/ Включение дебаг меню (kTAB).
+	if key == DIK_keys.DIK_TAB then
+		if swe_debug_menu == "0" then
+			swe_debug_menu	= "1"
+		else
+			swe_debug_menu	= "0"
+			actor_is_a_dog	= "0"
+			debug_weather	= "0"
+			hide_hud		= "0"
+			surge_on_off	= "0"
+			psi_storm_on_off = "0"
+			fallout_on_off = "0"
+		end
+	end
+
+	--/ Вызвать \ Остановить Выброс (kB).
+	if key == DIK_keys.DIK_B and swe_debug_menu == "1" then
+			if surge_on_off == "0" then
+				surge_on_off = "1"
+--				surge_manager.forced_surge_state = 1
+--				surge_manager.get_surge_manager():start(true)
+				surge_manager.forced_purge()
+			else
+--				surge_manager.forced_surge_state = 0
+				surge_on_off = "0"
+				surge_manager.stop_surge()
+			end
+	end
+	
+	--/ Вызвать \ Остановить пси-шторм (kN).
+	if key == DIK_keys.DIK_N and swe_debug_menu == "1" then
+			if psi_storm_on_off == "0" then
+				psi_storm_on_off = "1"
+				psi_storm_manager.forced_psi_storm()
+			else
+				psi_storm_on_off = "0"
+				psi_storm_manager.stop_psi_storm()
+			end
+	end
+	
+		--/ Вызвать \ Остановить осадки (kF).
+	if key == DIK_keys.DIK_F and swe_debug_menu == "1" then
+			if fallout_on_off == "0" then
+				fallout_on_off = "1"
+				fallout_manager.forced_fallout()
+			else
+				fallout_on_off = "0"
+				fallout_manager.stop_fallout()
+			end
+	end
+
+	--/ Включить \ Выключить Бессмертие (kZ).
+	if key == DIK_keys.DIK_Z and swe_debug_menu == "1" then
+		if actor_is_a_dog == "0" then
+			actor_is_a_dog = "1"
+		else
+			actor_is_a_dog = "0"
+		end
+	end
+
+	--/ Показать \ Спрятать Худ (kLeftAlt).
+	if key == DIK_keys.DIK_LMENU and swe_debug_menu == "1" then
+		if hide_hud == "0" then
+			hide_hud = "1"
+			get_console():execute("hud_draw off")
+			get_console():execute("hud_crosshair off")
+		else
+			hide_hud = "0"
+			get_console():execute("hud_draw on")
+			get_console():execute("hud_crosshair on")
+		end
+	end
+
+	--/ Включить Дебаг Погоды (kLeftShift).
+	if key == DIK_keys.DIK_C and swe_debug_menu == "1" then
+		if debug_weather == "0" then
+			debug_weather = "1"
+		else
+			debug_weather = "0"
+		end
+	end
+
+	--/ Включить demo_record (kV).
+	if key == DIK_keys.DIK_V and swe_debug_menu == "1" then
+		get_console():execute("demo_record 1 ")
+	end
+
+	--/ Перемотка времени (kM).
+	if key == DIK_keys.DIK_M and swe_debug_menu == "1" then
+		if swe_debug_menu == "1" then
+			if peremotka == "0" and ch_time_factor == "0" then
+				peremotka = "1"
+				show_c_text = "1"
+			else
+				peremotka = "0"
+				show_c_text = "0"
+			end
+		end
+		log("peremotka = "..peremotka.." show_c_text = "..show_c_text)
+	end
+
+	--/ Изменение таймфактора (kH).
+	if key == DIK_keys.DIK_H and swe_debug_menu == "1" then
+		if swe_debug_menu == "1" then
+			if ch_time_factor == "0" and peremotka == "0" then
+				ch_time_factor = "1"
+				show_c_text = "2"
+			else
+				ch_time_factor = "0"
+				show_c_text = "0"
+			end
+		end
+	end
+
+	--/ Уменьшаем (kJ).
+	if key == DIK_keys.DIK_J and swe_debug_menu == "1" then
+		if peremotka == "1" then
+			if hmh > 1 then
+				hmh = hmh - 1
+			end
+		end
+		if ch_time_factor == "1" then
+			if i > 0 then 
+			i = i - 1
+				if i >= 1 then
+					t_factor = tf_table[i]
+				else
+					i = 11
+				end
+			log("i = "..i.." factor = "..t_factor)
+			end
+		end
+	end
+
+	--/ Увеличиваем (kK).
+	if key == DIK_keys.DIK_K and swe_debug_menu == "1" then
+		if peremotka == "1" then
+			if hmh ~= 0 then
+				hmh = hmh + 1
+			end
+		end
+		if ch_time_factor == "1" then
+			if i >= 0 then 
+			i = i + 1
+				if i <= 11 then
+					t_factor = tf_table[i]
+				else
+					i = 0
+				end
+			log("i = "..i.." factor = "..t_factor)
+			end
+		end
+	end
+	
+	--/ Применение (kEnter).
+	if key == DIK_keys.DIK_RETURN and swe_debug_menu == "1" then
+		if peremotka == "1" then
+			level.change_game_time(0,hmh,0)
+		end
+		if ch_time_factor == "1" then
+			level.set_time_factor(t_factor)
+		end
+	end
+end
+
+--/ Статичные параметры скриптового кейлоггера.
+local con = nil
+local con_command = "mm_net_player_name"
+local def_value = "_"
+
+--/ Рабочий скриптовый кейлоггер.
+function script_keylogger()
+		if not con then
+			con = get_console()
+			con:execute(con_command.." "..def_value)
+				for k,v in pairs(_G[script_name()]) do
+
+					if type(v)=='function' and DIK_keys[string.upper(k)] then
+					local key = "k"..string.gsub(k,"dik_","")
+					con:execute("bind_console "..con_command.." "..k.." "..key)
+					end
+				end
+		else
+		local str = con:get_string(con_command)  
+			if str~=def_value and this [str]then
+				this[str]()
+				con:execute(con_command.." "..def_value)
+			end
+		end
+end
+
+
+--]] -----------------------------------------------------------------------------------------------
+--/	Кнопки кейлогера - это имена функций, кейлоггер просто их перебирает и подставляет под клавиши
+--/	соответственно имена должны совпадать с реальными кнопками.
+--]] -----------------------------------------------------------------------------------------------
+
+--/ Включение дебаг меню (kTAB).
+function dik_tab()
+	if swe_debug_menu == "0" then
+		swe_debug_menu	= "1"
+	else
+		swe_debug_menu	= "0"
+		actor_is_a_dog	= "0"
+		debug_weather	= "0"
+		hide_hud		= "0"
+		surge_on_off	= "0"
+		psi_storm_on_off = "0"
+	end
+end
+
+--/ Включить demo_record (kV).
+function dik_v()
+	if swe_debug_menu == "1" then
+		get_console():execute("demo_record 1 ")
+	end
+end
+
+	--/ Вызвать \ Остановить Выброс (kB).
+function dik_b()
+	if swe_debug_menu == "1" then
+		if surge_on_off == "0" then
+			surge_on_off = "1"
+--				surge_manager.forced_surge_state = 1
+--				surge_manager.get_surge_manager():start(true)
+			surge_manager.forced_purge()
+		else
+--				surge_manager.forced_surge_state = 0
+			surge_on_off = "0"
+			surge_manager.stop_surge()
+		end
+	end
+end
+
+	--/ Вызвать \ Остановить Пси Шторм (kN).
+function dik_n()
+	if swe_debug_menu == "1" then
+		if psi_storm_on_off == "0" then
+			psi_storm_on_off = "1"
+--				surge_manager.forced_surge_state = 1
+--				surge_manager.get_surge_manager():start(true)
+			psi_storm_manager.forced_psi_storm()
+		else
+--				surge_manager.forced_surge_state = 0
+			psi_storm_on_off = "0"
+			psi_storm_manager.stop_psi_storm()
+		end
+	end
+end
+
+	--/ Вызвать \ Остановить осадки (kM).
+function dik_f()
+	if swe_debug_menu == "1" then
+		if fallout_on_off == "0" then
+			fallout_on_off = "1"
+			fallout_manager.forced_fallout()
+		else
+			fallout_on_off = "0"
+			fallout_manager.stop_fallout()
+		end
+	end
+end
+	
+--/ Включить \ Выключить Бессмертие (kZ).
+function dik_z()
+	if actor_is_a_dog == "0" then
+		actor_is_a_dog = "1"
+	else
+		actor_is_a_dog = "0"
+	end
+end
+
+--/ Показать \ Спрятать Худ (kLeftAlt).
+function dik_lmenu()
+	if swe_debug_menu == "1" then
+		if hide_hud == "0" then
+			hide_hud = "1"
+			get_console():execute("hud_draw off")
+			get_console():execute("hud_crosshair off")
+		else
+			hide_hud = "0"
+			get_console():execute("hud_draw on")
+			get_console():execute("hud_crosshair on")
+		end
+	end
+end
+
+--/ Включить Дебаг Погоды (kLeftShift).
+function dik_c()
+	if swe_debug_menu == "1" then
+		if debug_weather == "0" then
+			debug_weather = "1"
+		else
+			debug_weather = "0"
+		end
+	end
+end
+
+--Перемотка времени.
+function dik_m()
+	if swe_debug_menu == "1" then
+		if peremotka == "0" and ch_time_factor == "0" then
+			peremotka = "1"
+			show_c_text = "1"
+		else
+			peremotka = "0"
+			show_c_text = "0"
+		end
+	end
+	log("peremotka = "..peremotka.." show_c_text = "..show_c_text)
+end
+
+--Изменение таймфактора.
+function dik_h()
+	if swe_debug_menu == "1" then
+		if ch_time_factor == "0" and peremotka == "0" then
+			ch_time_factor = "1"
+			show_c_text = "2"
+		else
+			ch_time_factor = "0"
+			show_c_text = "0"
+		end
+	end
+end
+
+--Уменьшаем.
+function dik_j()
+	if peremotka == "1" then
+		if hmh > 1 then
+			hmh = hmh - 1
+		end
+	end
+	if ch_time_factor == "1" then
+		if i > 0 then 
+		i = i - 1
+			if i >= 1 then
+				t_factor = tf_table[i]
+			else
+				i = 11
+			end
+		log("i = "..i.." factor = "..t_factor)
+		end
+	end
+end
+
+--Увеличиваем.
+function dik_k()
+	if peremotka == "1" then
+		if hmh ~= 0 then
+			hmh = hmh + 1
+		end
+	end
+	if ch_time_factor == "1" then
+		if i >= 0 then 
+		i = i + 1
+			if i <= 11 then
+				t_factor = tf_table[i]
+			else
+				i = 0
+			end
+		log("i = "..i.." factor = "..t_factor)
+		end
+	end
+end
+
+--Применение.
+function dik_return()
+	if peremotka == "1" then
+		level.change_game_time(0,hmh,0)
+	end
+	if ch_time_factor == "1" then
+		level.set_time_factor(t_factor)
+	end
+end

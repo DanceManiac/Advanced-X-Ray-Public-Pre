@@ -245,3 +245,36 @@ descr = {+a} test_storyline_task_text2, nil
 reward_money = 10000
 condlist_0 = {+test_info_1} complete
 storyline = false
+
+;AtmosFear Fallout
+[hide_from_fallout_rad]
+icon = ui_inGame2_Fallout_rad
+prior = 199
+title_functor = fallout_task_title
+descr_functor = fallout_task_descr
+target_functor = fallout_task_target
+;dont_send_update_news = true
+condlist_0 = {=fallout_complete()} complete
+condlist_1 = {!actor_alive()} fail
+
+[hide_from_fallout_acid]
+icon = ui_inGame2_Fallout_acid
+prior = 199
+title_functor = fallout_task_title
+descr_functor = fallout_task_descr
+target_functor = fallout_task_target
+;dont_send_update_news = true
+condlist_0 = {=fallout_complete()} complete
+condlist_1 = {!actor_alive()} fail
+
+;AtmosFear Psi Storm
+[hide_from_psi_storm]
+icon = ui_inGame2_psi_storm
+prior = 199
+title_functor = psi_storm_task_title
+descr_functor = psi_storm_task_descr
+target_functor = psi_storm_task_target
+;dont_send_update_news = true
+condlist_0 = {=psi_storm_complete()} complete
+condlist_1 = {!actor_alive()} fail
+

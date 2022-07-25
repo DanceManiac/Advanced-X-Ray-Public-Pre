@@ -31,6 +31,7 @@
 		<btn name="btn_net_game"	caption="ui_mm_network_game" />
 		<btn name="btn_options"		caption="ui_mm_options_n" />
 		<btn name="btn_credits"		caption="ui_mm_credits" />
+		<btn name="btn_contribList"	caption="ui_mm_contrib_list" />
 		<btn name="btn_quit"		caption="ui_mm_quit2windows" />
 	</menu_main>
 
@@ -47,6 +48,7 @@
 		<btn name="btn_logout"		  caption="ui_mm_logout" />
 		<btn name="btn_options"		  caption="ui_mm_options_n" />
 		<btn name="btn_credits"		  caption="ui_mm_credits" />
+		<btn name="btn_contribList"	  caption="ui_mm_contrib_list" />
 		<btn name="btn_quit"		    caption="ui_mm_quit2windows" />
   </menu_main_logout>
 
@@ -59,6 +61,7 @@
 		<btn name="btn_net_game"	caption="ui_mm_network_game" />
 		<btn name="btn_options"		caption="ui_mm_options_n" />
 		<btn name="btn_credits"		caption="ui_mm_credits" />
+		<btn name="btn_contribList"	caption="ui_mm_contrib_list" />
 		<btn name="btn_quit"		caption="ui_mm_quit2windows" />
 	</menu_main_last_save>
 
@@ -77,6 +80,7 @@
 		<btn name="btn_save"		caption="ui_mm_save_game" />
 		<btn name="btn_options"		caption="ui_mm_options_n" />
 		<btn name="btn_credits"		caption="ui_mm_credits" />
+		<btn name="btn_contribList"	caption="ui_mm_contrib_list" />
 		<btn name="btn_quit_to_mm"	caption="ui_mm_quit_game" />
 		<btn name="btn_quit"		caption="ui_mm_quit2windows" />
 	</menu_main_single>
@@ -86,6 +90,7 @@
 		<btn name="btn_load"		caption="ui_mm_load_game" />
 		<btn name="btn_options"		caption="ui_mm_options_n" />
 		<btn name="btn_credits"		caption="ui_mm_credits" />
+		<btn name="btn_contribList"	caption="ui_mm_contrib_list" />
 		<btn name="btn_quit_to_mm"	caption="ui_mm_quit_game" />
 		<btn name="btn_quit"		caption="ui_mm_quit2windows" />
 	</menu_main_single_dead>
@@ -94,6 +99,7 @@
 	    <btn name="btn_ret"         caption="ui_mm_return_game" />
 	    <btn name="btn_options"     caption="ui_mm_options_n" />
 	    <btn name="btn_credits"     caption="ui_mm_credits" />
+		<btn name="btn_contribList"	caption="ui_mm_contrib_list" />
 	    <btn name="btn_quit_to_mm"  caption="ui_mm_disconnect" />
 	    <btn name="btn_quit"        caption="ui_mm_quit2windows" />
 	</menu_main_mm>
@@ -105,5 +111,13 @@
 	<static_version x="15" y="740" width="100" height="30">
 		<text align="l" font="graffiti19" r="135" g="123" b="116" complex_mode="0"/>
 	</static_version>
+		              <!--#--#-->
+	<mod_version x="15" y="700" width="100" height="30">
+		<text align="l" font="graffiti19" r="155" g="135" b="0" complex_mode="0"/>
+	</mod_version>
+	
+	<mfs_team_info x="15" y="720" width="100" height="30">
+		<text align="l" font="letterica18" r="155" g="135" b="0" complex_mode="0"/>
+	</mfs_team_info>
 
 </w>

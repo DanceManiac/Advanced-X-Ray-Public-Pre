@@ -160,3 +160,31 @@ end
 function surge_task_target(id, field, p)
 	return surge_manager.get_task_target()
 end
+
+--AtmosFear Fallout
+
+function fallout_task_title(id, field, p)
+	return fallout_manager.get_task_title()
+end
+
+function fallout_task_descr(id, field, p)
+	return fallout_manager.get_task_descr()
+end
+
+function fallout_task_target(id, field, p)
+	return fallout_manager.get_task_target()
+end
+
+--AtmosFear Psi Storm
+
+function psi_storm_task_title(id, field, p)
+	return psi_storm_manager.get_task_title()
+end
+
+function psi_storm_task_descr(id, field, p)
+	return psi_storm_manager.get_task_descr()
+end
+
+function psi_storm_task_target(id, field, p)
+	return psi_storm_manager.get_task_target()
+end

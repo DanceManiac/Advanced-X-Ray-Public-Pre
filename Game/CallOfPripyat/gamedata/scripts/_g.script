@@ -81,27 +81,38 @@ local scripts_to_print =	{
 							["task_objects"]	 = true
 							}
 function printf(fmt,...)
+	if swe_debug and swe_debug.log_mode ~= 2 then
+			local is_g = 0
+			local result = fmt
+			if debug == nil then
+			
+				if swe_debug.log_mode == 1 then
+					log("# SWE: "..string.format(fmt,...))
+				else
+					log(string.format(fmt,...))
+				end
+				
+				return
+			end
+			local info_table = debug.getinfo(2)
+			local script_name = string.gsub(info_table.short_src, "%.script", "")
+			script_name = string.gsub(script_name, "gamedata\\scripts\\", "")
 
-	local is_g = 0
-	local result = fmt
-	if debug == nil then
-		log(string.format(fmt,...))
-		return
+			if scripts_to_print[script_name] == false then return end
+
+			script_name,is_g = string.gsub(script_name, "_g", "")
+			if is_g == 0 then
+				result = script_name..":("..info_table.currentline.."):"..fmt
+			else
+				result = fmt
+			end
+			
+			if swe_debug.log_mode == 1 then
+				log("# SWE: "..string.format(result,...))
+			else
+				log(string.format(result,...))
+			end
 	end
-	local info_table = debug.getinfo(2)
-	local script_name = string.gsub(info_table.short_src, "%.script", "")
-	script_name = string.gsub(script_name, "gamedata\\scripts\\", "")
-
-	if scripts_to_print[script_name] == false then return end
-
-	script_name,is_g = string.gsub(script_name, "_g", "")
-	if is_g == 0 then
-		result = script_name..":("..info_table.currentline.."):"..fmt
-	else
-		result = fmt
-	end
-	log(string.format(result,...))
-
 end
 
 ----------------------------------------------------------------------
@@ -476,8 +487,16 @@ end
 
 -- Крешнуть игру (после вывода сообщения об ошибке в лог)
 function abort(fmt, ...)
-	local reason = string.format(fmt, ...)
-	--error_log(reason)
+	if swe_debug and swe_debug.abort_mode == 1 then
+		local reason = ""
+		reason = reason..string.format(fmt, ...)
+		log("# ABORT: "..reason)
+			if swe_debug.aggressive_abort == 1 then
+				local log_path = getFS():update_path("$logs$", "xray_"..user_name()..".log")
+				io.popen([["]]..log_path..[["]])
+				error_log(reason)
+			end
+	end
 end
 
 function set_inactivate_input_time(delta)
@@ -785,9 +804,11 @@ function vec_to_str (vector)
 end
 -- выводит в лог стэк вызова функций.
 function callstack()
+--[[
 	if debug ~= nil then
 		log(debug.traceback(2))
 	end
+]]--
 end
 -- меняет team:squad:group обьекта.
 function change_team_squad_group(se_obj, team, squad, group)

@@ -1,0 +1,186 @@
+<!--Раздел благодарностей-->
+
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="ui_mm_contrib_list">
+		<text>Раздел благодарностей</text>
+	</string>
+	<string id="ui_mfs_thanks_text">
+		<text>Благодарности и наработки</text>
+	</string>
+	<string id="ui_mfs_developers_text">
+		<text>Разработчики</text>
+	</string>
+	<string id="ui_mfs_donates_text">
+		<text>Пожертвовавшие</text>
+	</string>
+
+<!--Использованы наработки\благодарности-->
+	<string id="ui_mfs_sawk">
+		<text>sawk</text>
+	</string>
+	<string id="ui_mfs_valerok">
+		<text>ValeroK</text>
+	</string>
+	<string id="ui_mfs_lvutner">
+		<text>LVutner</text>
+	</string>
+	<string id="ui_mfs_xottab_duty">
+		<text>Xottab_DUTY</text>
+	</string>
+	<string id="ui_mfs_forserx">
+		<text>ForserX</text>
+	</string>
+	<string id="ui_mfs_oldserpskistalker">
+		<text>OldSerpskiStalker</text>
+	</string>
+	<string id="ui_mfs_openxray">
+		<text>OpenXRay</text>
+	</string>
+	<string id="ui_mfs_ogsr_engine">
+		<text>OGSR Engine</text>
+	</string>
+	<string id="ui_mfs_abramcumner">
+		<text>Abramcumner</text>
+	</string>
+	<string id="ui_mfs_atmosfear">
+		<text>Atmosfear 3</text>
+	</string>
+	<string id="ui_mfs_MayLay2k">
+		<text>MayLay2k</text>
+	</string>
+	<string id="ui_mfs_CorryZeron">
+		<text>CorryZeron</text>
+	</string>
+	<string id="ui_mfs_xrOxygen">
+		<text>xrOxygen</text>
+	</string>
+	<string id="ui_mfs_LexAddon">
+		<text>Lex Addon</text>
+	</string>
+	<string id="ui_mfs_rezkiy">
+		<text>Вадим "Резкий" Кулагин</text>
+	</string>
+	<string id="ui_mfs_Scava">
+		<text>Scava</text>
+	</string>
+	<string id="ui_mfs_fED">
+		<text>Жора Цементов (fED)</text>
+	</string>
+	<string id="ui_mfs_dwm_team">
+		<text>DWM Team</text>
+	</string>
+	
+<!--Разработчики-->
+	<string id="ui_mfs_Dance_Maniac">
+		<text>Dance Maniac</text>
+	</string>
+	<string id="ui_mfs_ggGhosTt">
+		<text>ggGhosTt</text>
+	</string>
+	
+<!--Пожертвовавшие-->
+	<string id="ui_mfs_manuel">
+		<text>Мануэль</text>
+	</string>
+	<string id="ui_mfs_atom39">
+		<text>Атом39</text>
+	</string>
+	<string id="ui_mfs_qteria">
+		<text>Qteria</text>
+	</string>
+	<string id="ui_mfs_aruron">
+		<text>Артём Иремадзе (Aruron)</text>
+	</string>
+	<string id="ui_mfs_xabar">
+		<text>Xabar</text>
+	</string>
+	<string id="ui_mfs_yaroslav_ustujanin">
+		<text>Ярослав Устюжанин</text>
+	</string>
+	<string id="ui_mfs_danya_stakanov">
+		<text>Блатной Даня Стаканов</text>
+	</string>
+	<string id="ui_mfs_rezkiy">
+		<text>Вадим «Резкий» Кулагин</text>
+	</string>
+	<string id="ui_mfs_artyom_menshikov">
+		<text>Артём Меньшиков</text>
+	</string>
+	
+<!--Подробнее-->
+	<string id="ui_mfs_sawk_descr">
+		<text>Благодарность за помощь в работе над погодой и многочисленные советы.</text>
+	</string>
+	<string id="ui_mfs_valerok_descr">
+		<text>Благодарность за помощь в работе над движком, с реализацией некоторых нововведений и оружейной частью кода.</text>
+	</string>
+	<string id="ui_mfs_lvutner_descr">
+		<text>Благодарность за помощь с графической частью, шейдерами.</text>
+	</string>
+	<string id="ui_mfs_xottab_duty_descr">
+		<text>Благодарность за помощь в работе над движком и помощь с устранением ошибок.</text>
+	</string>
+	<string id="ui_mfs_oldserpskistalker_descr">
+		<text>Благодарность за помощь с движком, помощь с миграцией проекта на VS2017.</text>
+	</string>
+	<string id="ui_mfs_narabotki_descr">
+		<text>Использовались наработки проекта.</text>
+	</string>
+	<string id="ui_mfs_narabotki2_descr">
+		<text>Использовались движковые наработки коллеги.</text>
+	</string>
+	<string id="ui_mfs_MayLay2k_descr">
+		<text>Соавтор скриптовой базы SWE, которая используется в проекте.</text>
+	</string>
+	<string id="ui_mfs_CorryZeron_descr">
+		<text>Благодарность за создание логотипов модификации.</text>
+	</string>
+	<string id="ui_mfs_tester_descr">
+		<text>Благодарность за тестирование модификации.</text>
+	</string>
+	<string id="ui_mfs_fed_descr">
+		<text>Использовались некоторые текстуры неба из погодного пака CGIM за его авторством.</text>
+	</string>
+	<string id="ui_mfs_dwm_team_descr">
+		<text>Благодарность за помощь с графической частью и шейдерами.</text>
+	</string>
+	
+	<string id="ui_mfs_DanceManiac_descr">
+		<text>Ведущий разработчик проекта. Движок, скрипты, шейдеры, погода, конфигурация, текстуры неба.</text>
+	</string>
+	<string id="ui_mfs_ggGhosTt_descr">
+		<text>Скриптер проекта. Скрипты, конфигурация, движок. Автор скриптовой базы SWE.</text>
+	</string>
+	<string id="ui_mfs_vadim_kulagin_descr">
+		<text>Главный тестер команды.</text>
+	</string>
+	
+	<string id="ui_mfs_manuel_descr">
+		<text>Пожертвовал: 2000р</text>
+	</string>
+	<string id="ui_mfs_atom39_descr">
+		<text>Пожертвовал: 500р</text>
+	</string>
+	<string id="ui_mfs_qteria_descr">
+		<text>Пожертвовал: 250р</text>
+	</string>
+	<string id="ui_mfs_aruron_descr">
+		<text>Пожертвовал: 150р</text>
+	</string>
+	<string id="ui_mfs_xabar_descr">
+		<text>Пожертвовал: 100р</text>
+	</string>
+	<string id="ui_mfs_yaroslav_ustujanin_descr">
+		<text>Пожертвовал: 100р</text>
+	</string>
+	<string id="ui_mfs_danya_stakanov_descr">
+		<text>Пожертвовал: 100р</text>
+	</string>
+	<string id="ui_mfs_vadim_kulagin_donate_descr">
+		<text>Пожертвовал: 100р</text>
+	</string>
+	<string id="ui_mfs_artyom_menshikov_donate_descr">
+		<text>Пожертвовал: 130р</text>
+	</string>
+</string_table>
