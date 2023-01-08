@@ -2,13 +2,11 @@
 #include "mblur.h"
 #include "dof.h"
 
-#define SSR_ROAD
-#include "reflections.h"
+// Check Screen Space Shaders
+#include "check_screenspace.h"
 
-#if defined(USE_MSAA)
-Texture2DMS <float4, MSAA_SAMPLES> s_puddles;
-#else
-Texture2D <float> s_puddles;
+#ifdef SSFX_DEBAND
+	#include "screenspace_debanding.h"
 #endif
 
 /*
@@ -67,11 +65,9 @@ c2_out main( v2p_aa_AA I )
 #else
 	gbuffer_data gbd	= gbuffer_load_data(I.Tex0, iSample );
 #endif
-	
+  	float 	depth 		= gbd.P.z;
+		
 #ifdef 	USE_DISTORT
-//  	float 	depth 	= tex2D 	(s_position, 	I.tc0).z;
-//	float4 	distort	= tex2D		(s_distort, 	I.tc0);
-  	float 	depth 	= gbd.P.z;
 #ifndef USE_MSAA
 	float4 	distort	= s_distort.Sample(smp_nofilter, I.Tex0);
 #else // USE_MSAA
@@ -92,16 +88,16 @@ c2_out main( v2p_aa_AA I )
 #else // USE_DISTORT
 	float2	center 	= I.Tex0;
 #endif
-   	//float3 	img 	= tex2D		(s_image, center);
 
 	float3	img	= dof(center);
-//	float4 	bloom	= tex2D		(s_bloom, center);
-    float4 bloom = s_bloom_new.Sample(smp_rtlinear,center);
-	float4 bloom_orig = s_bloom.Sample(smp_rtlinear,center);
-	bloom = (bloom + bloom_orig);
-	
-//			img 	= mblur		(center,tex2D(s_position,I.tc0),img.rgb);
-//			img 	= mblur( center, s_position.Sample( smp_nofilter, tc0), img.rgb);
+	float4 	bloom	= s_bloom.Sample( smp_rtlinear, center);
+
+	// Sky Debanding Implementation
+#ifdef SSFX_DEBAND
+	if (depth <= SKY_EPS)
+		img = ssfx_debanding(img, I.Tex0.xy);
+#endif
+
 	if (!isSecondVPActive())
 			img 	= mblur( center, ( gbd ).P, img.rgb);
 
@@ -122,45 +118,6 @@ c2_out main( v2p_aa_AA I )
 #ifdef USE_MSAA
 	float4 ptp = mul(m_P, float4(gbd.P, 1));
 	res.Depth = ptp.w==0?1:ptp.z/ptp.w;
-#endif
-	
-	#if defined(USE_MSAA)
-		float mask = s_puddles.Load(center * screen_res_alt.xy, 0);
-	#else
-		float mask = s_puddles.Sample(smp_nofilter, center);
-	#endif
-
-	if(gbd.P.z <= 0.01) mask = 0;
-    
-	
-#if defined(SSR_QUALITY)
-    if(mask != 0)
-    {
-        // Get world normal
-        float3 WN = mul(m_view2world, float4(gbd.N, 0));
-
-        #define SSR_NORMAL_RECONSTRUCTOR_MM 0.01 // Virtual sharpness
-        #define SSR_NORMAL_RECONSTRUCTOR_VF 1.25 // Vertical|horizontal offset [1..2]
-
-        float3 M = abs(WN) + 1;
-
-        if(M.y > SSR_NORMAL_RECONSTRUCTOR_VF)
-            WN.y /= SSR_NORMAL_RECONSTRUCTOR_MM;
-        else
-            WN.xz *= M.xz / SSR_NORMAL_RECONSTRUCTOR_MM;
-
-        WN = normalize(WN);
-        
-        // Get world position
-        float3 WP = mul(m_view2world, float4(gbd.P, 1));
-
-        // Perform reflecions
-        float4 reflections = depth_traced_ssr(WP, WN, gbd.P);
-
-        float3 reflections_f = reflections.xyz + reflections.w * L_sun_color;
-        
-        res.Color.xyz = lerp(res.Color.xyz, reflections_f, mask * puddles_accumulator.x);
-    }
 #endif
 	
 	float oluma = dot(res.Color.xyz, LUMINANCE_VECTOR);

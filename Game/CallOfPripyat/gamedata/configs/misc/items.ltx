@@ -29,6 +29,11 @@ eat_portions_num	= 1
 eat_thirst			= 0
 eat_intoxication	= 0
 eat_sleepeness		= 0
+eat_alcoholism		= 0
+eat_hangover		= 0
+eat_narcotism		= 0
+eat_withdrawal		= 0
+eat_drugs		= 0
 
 boost_time				= 0.0
 boost_max_weight		= 0.0
@@ -36,6 +41,7 @@ boost_health_restore	= 0.0
 boost_power_restore		= 0.0
 boost_radiation_restore	= 0.0
 boost_bleeding_restore	= 0.0
+boost_time_factor 		= 0.0
 
 boost_radiation_protection	= 0.0
 boost_telepat_protection 	= 0.0
@@ -52,14 +58,13 @@ boost_explosion_immunity	= 0.0
 boost_fire_wound_immunity	= 0.0
 ;use_sound			= characters_voice\multiplayer\team_1\voice_roger_3
 
-[base_quest_item]:identity_immunities
+[base_quest_item]:booster
 GroupControlSection                                = spawn_group 
 discovery_dependency                               = 
 $spawn                                             = "devices\pda"
 $prefetch                                          = 16
 cform                                              = skeleton 
-visual                                   	   	   = dynamics\devices\dev_pda\dev_pda.ogf
-class                                              = S_ATTCH 
+visual                                   	   	   = dynamics\devices\dev_pda\dev_pda.ogf 
 default_to_ruck                                    = false
 sprint_allowed                                     = true
 description                                        = st_pda_descr
@@ -75,8 +80,8 @@ attach_angle_offset                                = 0.000000, -1.204452, -1.262
 attach_position_offset                             = 0.081856, -0.035081, 0.011694 
 attach_bone_name                                   = bip01_l_hand 
 auto_attach                                        = false 
-can_trade                               	   	   = false
-
+can_trade                               	   = false
+can_use 					   = false
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;	FOOD
@@ -668,23 +673,32 @@ screen_off_delay						 		   = 0.5
 thumb_rot_x										   = 1
 thumb_rot_y										   = -0.1
 
+light_enabled = true
+light_color = 0.075, 0.085, 0.085
+light_range = 0.25
+
 [pda_hud]:hud_base
 inertion_offset_LRUD                               = 0.02,  0.02,  0.02, 0.02
 inertion_offset_LRUD_aim 							= 0.009, 0.009, 0.009, 0.009
 
 attach_place_idx                                   = 0
 item_visual                                        = dynamics\devices\dev_pda\dev_pda_hud.ogf
-hands_position                                     = 0.000,-0.130,0.150
-hands_position_16x9                                = -0.005,-0.11,0.1
+hands_position                                     = 0.000,-0.110,0.200
+hands_position_16x9                                = 0.000,-0.090,0.150
 hands_orientation                                  = 0,0,0
 hands_orientation_16x9                             = 0,0,0
 
-aim_hud_offset_pos		                           = 0.001,-0.069,-0.19
+fire_point											= 0,0,0
+fire_bone      	    								= joystick
+fire_point2         								= 0,0,0
+fire_bone2											= joystick
+
+aim_hud_offset_pos		                           = 0.001,-0.110,-0.19
 aim_hud_offset_rot		                           = -0.4,0,0.01
 gl_hud_offset_pos			                       = 0,0,0
 gl_hud_offset_rot			                       = 0,0,0
 
-aim_hud_offset_pos_16x9		                       = 0.001,-0.069,-0.19
+aim_hud_offset_pos_16x9		                       = 0.001,-0.110,-0.19
 aim_hud_offset_rot_16x9		                       = -0.4,0,0.01
 gl_hud_offset_pos_16x9		                       = 0,0,0
 gl_hud_offset_rot_16x9			                   = 0,0,0
@@ -855,3 +869,23 @@ charge_level			= 1.0
 
 use_sound			= mfs_team\item_use\inv_battery
 
+[antigas_filter]:booster
+$spawn 				= "food and drugs\kolbasa"
+class				= D_FILTER
+visual				= mfs_team\items\itm_devices\antigas_filter.ogf
+description			= st_filter_descr
+
+inv_name			= st_filter
+inv_name_short			= st_filter
+inv_weight			= 0.25
+
+inv_grid_width			= 1
+inv_grid_height			= 1
+inv_grid_x				= 2
+inv_grid_y				= 27
+
+cost				= 250
+
+filter_condition		= 1.0
+
+use_sound			= interface\inv_attach_addon

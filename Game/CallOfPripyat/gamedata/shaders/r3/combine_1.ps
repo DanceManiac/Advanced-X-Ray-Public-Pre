@@ -7,7 +7,17 @@
 
 #include "lmodel.h"
 #include "hmodel.h"
-#include "night_vision.h"
+
+// Check MODs
+#include "check_screenspace.h"
+
+#ifdef SSFX_SSR
+	#include "screenspace_reflections.h"
+#endif
+
+#if LOWLAND_FOG_TYPE == 1
+	#include "screenspace_fog.h"
+#endif
 
 float compute_height_fog(float3 P_view)
 {
@@ -200,18 +210,25 @@ _out main ( _input I, uint iSample : SV_SAMPLEINDEX )
 //	hdiffuse *= (occ*(D.rgb + .1h));
 	hdiffuse *= occ;
 	hspecular *= occ;
+	
+	// Disable specular if SSR is enabled. ( Temporary fix? )
+#ifdef SSFX_SSR
+	hspecular = 0;
+#endif
 
     float4         light       = float4(L.rgb + hdiffuse, L.w);
 	float4         C           = D*light;                             
 	float3 spec 				= C.www * L.rgb + hspecular * C.rgba; // replicated specular
 
 #ifdef         USE_SUPER_SPECULAR
-                      spec      = (C.rgb*.5h + .5h)*C.w + hspecular        ;
+                      spec      = (C.rgb*.5h + .5h)*C.w + hspecular;
 #endif
-//		float3       color     = C.rgb + D.rgb*spec     ;
-//		float3       color     = C.rgb + (D.rgb*spec+spec)/0.5h;
-		float3       color     = C.rgb + spec     ;
-//		float3       color     = C.rgb + D.rgb*spec+hspecular+hspecular     ;	//	More realistic and contrast specular - Ugrumiy edition
+		float3       color     = C.rgb + spec;
+		
+	// SSR Implementation
+#ifdef SSFX_SSR
+	SSFX_ScreenSpaceReflections(I.tc0, P, N, rain_params.y / 5.0f, color, ISAMPLE);	
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// For Test ///////////////////////////////////////////////////////////////////
@@ -243,11 +260,16 @@ _out main ( _input I, uint iSample : SV_SAMPLEINDEX )
 ////////////////////////////////////////////////////////////////////////////////
 
         // here should be distance fog
+#if LOWLAND_FOG_TYPE == 1
+		float3 		WorldP			= mul(m_inv_V, float4(P.xyz, 1));
+		float		fog				= SSFX_HEIGHT_FOG(P.xyz, WorldP.y, color);
+#else
         float3        	pos        		= P.xyz;
         float         	distance		= length		(pos);
         float         	fog				= saturate		(distance*fog_params.w + fog_params.x); //
 		                color			= lerp     		(color, fog_color, fog);        		//
 						color 			= lerp			(color, fog_color, compute_height_fog(P.xyz));
+#endif
 
         float        	skyblend		= saturate		(fog*fog);
 
